@@ -44,8 +44,6 @@ public class TransportMain1 extends javax.swing.JFrame {
         initComponents();
         this.username = DBUsername;
         jList1.setModel(new DefaultListModel<>());
-        System.out.println(DBUsername + "DBUSERNAME");
-//        jButton4.setVisible(false);
         DefaultTableModel model = (DefaultTableModel) tblTransport.getModel();
         model.setRowCount(0);
         try {

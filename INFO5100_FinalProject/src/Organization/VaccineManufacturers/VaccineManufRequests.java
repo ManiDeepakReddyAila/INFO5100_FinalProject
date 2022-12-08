@@ -45,7 +45,7 @@ public class VaccineManufRequests extends javax.swing.JPanel {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fp?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "Deepak@1999");
             Statement myStatement = con.createStatement();
-            String query1 = "select * from pharmacy_requests where patient_name = " + patientName;
+            String query1 = "select * from pharmacy_requests where patient_name = '" + patientName + "'";
             ResultSet rs = myStatement.executeQuery(query1);
             String status = "";
             while (rs.next()) {

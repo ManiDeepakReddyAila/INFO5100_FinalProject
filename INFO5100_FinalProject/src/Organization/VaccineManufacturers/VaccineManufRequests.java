@@ -249,7 +249,40 @@ public class VaccineManufRequests extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fp?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "Deepak@1999");
+            Statement myStatement = con.createStatement();
+            for(String s: Arrays.asList(medicines.split("<>"))){
+                String query1 = "select * from medicines where medicine_name = '" + s.split(" --- ")[0] + "'";
+                System.out.println(query1);
+                ResultSet rs = myStatement.executeQuery(query1);
+                String medicine_name = "";
+                String quantity = "";
+                int price = 0;
+                while (rs.next()) {
+                    System.out.println("hiiii");
+                    medicine_name = rs.getString("medicine_name");
+                    quantity = rs.getString("quantity");
+                    price = rs.getInt("price");
+                    System.out.println(medicine_name);
+                }
+                
+                if(Integer.parseInt(quantity) >= Integer.parseInt(s.split(" --- ")[1])){
+                    String query = "Update `medicines` set quantity = '" + String.valueOf(Integer.parseInt(quantity) - Integer.parseInt(s.split(" --- ")[1])) + "' where medicine_name = '" + s.split(" --- ")[0] + "'";
+                    myStatement.executeUpdate(query);
+                } else {
+                    JOptionPane.showMessageDialog(this, "Required units for Drug " + s.split(" --- ")[0] + " not avaibale");
+                }
+                
+            }
+            String query = "Update `pharmacy_requests` set status = 'Completed' where patient_name = '" + patientName + "'";
+            myStatement.executeUpdate(query);
+            jButton1.setEnabled(false);
+            con.close();
+        } catch (Exception E) {
+            JOptionPane.showMessageDialog(this, E + "Error in DB call");
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

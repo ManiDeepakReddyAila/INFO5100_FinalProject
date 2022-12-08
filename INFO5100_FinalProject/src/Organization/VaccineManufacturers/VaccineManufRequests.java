@@ -33,7 +33,31 @@ public class VaccineManufRequests extends javax.swing.JPanel {
     static Logger log = Logger.getLogger(VaccineManufRequests.class.getName());
 
     public void addMedicinesToCart( String patient_name, String medicines){
-        // get patient name and medicines to display in list here
+        this.medicines = medicines;
+        this.patientName = patient_name;
+        jLabel1.setText(jLabel1.getText() + " " + patient_name);
+        DefaultListModel<String> defaultListModel = (DefaultListModel<String>)jList1.getModel();
+        defaultListModel.clear();
+        for(String s: Arrays.asList(medicines.split("<>"))){
+           defaultListModel.addElement(s);
+        }
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fp?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "Deepak@1999");
+            Statement myStatement = con.createStatement();
+            String query1 = "select * from pharmacy_requests where patient_name = " + patientName;
+            ResultSet rs = myStatement.executeQuery(query1);
+            String status = "";
+            while (rs.next()) {
+                status = rs.getString("status");
+            }
+            if(status.equals("Completed")){
+                jButton1.setEnabled(false);
+            }
+            con.close();
+        } catch (Exception E) {
+            JOptionPane.showMessageDialog(this, E + "Error in DB call");
+        }
     }
     
     public VaccineManufRequests(JPanel RightPanel) {

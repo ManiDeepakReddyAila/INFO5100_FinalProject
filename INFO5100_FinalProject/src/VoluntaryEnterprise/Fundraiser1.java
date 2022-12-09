@@ -361,7 +361,7 @@ public class Fundraiser1 extends javax.swing.JFrame {
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fp?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "Deepak@1999");
             Statement myStatement = con.createStatement();
 
-            String query = "Update fundraiser_requests set status='Rejected' where healthcamp_name='" + healthcamp_name + "'";
+            String query = "Update fundraiser_requests set status='Rejected' where healthcamp_name=" + healthcamp_name + "'";
             myStatement.executeUpdate(query);
             JOptionPane.showMessageDialog(this, "Request Rejected!!");
             model.setRowCount(0);

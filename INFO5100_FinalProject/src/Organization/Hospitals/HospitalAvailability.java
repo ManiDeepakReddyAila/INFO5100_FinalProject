@@ -224,7 +224,42 @@ public class HospitalAvailability extends javax.swing.JPanel {
         String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
         DefaultTableModel model = (DefaultTableModel) tblFoodItems.getModel();
 
-  
+          try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Main?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "Deepak@1999");
+            Statement myStatement = con.createStatement();
+
+            String query = "Insert into `FinalProj_HospitalAvailability`" + "values('" + HospitalName + "','" + AvailableBeds + "','" + AvailableVentilators + "','" + Date + "')";
+            myStatement.executeUpdate(query);
+
+            JOptionPane.showMessageDialog(this, "Record Inserted!!");
+            log.info("Record Inserted!!");
+
+            String querysel = "Select * from FinalProj_HospitalAvailability";
+            ResultSet rs = myStatement.executeQuery(querysel);
+            //cmbHospital.removeAllItems();
+            model.setRowCount(0);
+            while (rs.next()) {
+                //cmbStore.addItem(rs.getString("StoreName"));
+
+                String HospitalName1 = rs.getString("HospitalName");
+                String AvailableBeds1 = rs.getString("AvailableBeds");
+                String AvailableVentilators1 = rs.getString("AvailableVentilators");
+                String Lastupdated = rs.getString("Lastupdated");
+
+                Object row[] = new Object[4];
+                row[0] = HospitalName1;
+                row[1] = AvailableBeds1;
+                row[2] = AvailableVentilators1;
+                row[3] = Lastupdated;
+                model.addRow(row);
+            }
+            con.close();
+        } //System.out.println("Inserted data");
+        catch (Exception E) {
+            JOptionPane.showMessageDialog(this, "Error in DB connection");
+            log.error("Error in DB connection");
+        }
 
     }//GEN-LAST:event_btnCreateActionPerformed
 

@@ -21,7 +21,7 @@ import javax.swing.table.DefaultTableModel;
 import org.apache.log4j.Logger;
 /**
  *
- * @author aesha
+ * @author manideepakreddyaila
  */
 public class Fundraiser1 extends javax.swing.JFrame {
 
@@ -304,12 +304,88 @@ public class Fundraiser1 extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+//        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+//        String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
+        int selectedRow = jTable1.getSelectedRow();
+        if(selectedRow == -1){
+            JOptionPane.showMessageDialog(null,"Select a row before choosing to view/delete record", " Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        String healthcamp_name = (String) jTable1.getValueAt(selectedRow, 0);
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fp?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "Deepak@1999");
+            Statement myStatement = con.createStatement();
+
+            String query = "Update fundraiser_requests set status='In Progress' where healthcamp_name='" + healthcamp_name + "'";
+            myStatement.executeUpdate(query);
+            JOptionPane.showMessageDialog(this, "Request Approved, now in progress!!");
+            model.setRowCount(0);
+            String query1 = "Select * from fundraiser_requests";
+            ResultSet rs = myStatement.executeQuery(query1);
+            while (rs.next()) {
+                String healthcamp_name1 = rs.getString("healthcamp_name");
+                int total_amount = rs.getInt("total_amount");
+                String status = rs.getString("status");
+                String created_date = rs.getString("created_date");
+
+                Object row[] = new Object[4];
+                row[0] = healthcamp_name1;
+                row[1] = total_amount;
+                row[2] = status;
+                row[3] = created_date;
+                model.addRow(row);
+
+            }
+            con.close();
+        } //System.out.println("Inserted data");
+        catch (Exception E) {
+            JOptionPane.showMessageDialog(this, E + "Error in DB connection");
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+//        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+//        String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
+        int selectedRow = jTable1.getSelectedRow();
+        if(selectedRow == -1){
+            JOptionPane.showMessageDialog(null,"Select a row before choosing to view/delete record", " Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        String healthcamp_name = (String) jTable1.getValueAt(selectedRow, 0);
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fp?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "Deepak@1999");
+            Statement myStatement = con.createStatement();
+
+            String query = "Update fundraiser_requests set status='Rejected' where healthcamp_name='" + healthcamp_name + "'";
+            myStatement.executeUpdate(query);
+            JOptionPane.showMessageDialog(this, "Request Rejected!!");
+            model.setRowCount(0);
+            String query1 = "Select * from fundraiser_requests";
+            ResultSet rs = myStatement.executeQuery(query1);
+            while (rs.next()) {
+                String healthcamp_name1 = rs.getString("healthcamp_name");
+                int total_amount = rs.getInt("total_amount");
+                String status = rs.getString("status");
+                String created_date = rs.getString("created_date");
+
+                Object row[] = new Object[4];
+                row[0] = healthcamp_name1;
+                row[1] = total_amount;
+                row[2] = status;
+                row[3] = created_date;
+                model.addRow(row);
+
+            }
+            con.close();
+        } //System.out.println("Inserted data");
+        catch (Exception E) {
+            JOptionPane.showMessageDialog(this, E + "Error in DB connection");
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed

@@ -151,24 +151,29 @@ public class PatientRegistration extends javax.swing.JPanel {
 
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
         String name = nameField.getText();
-        int age = Integer.parseInt(ageField.getText());
         String gender = genderField.getSelectedItem().toString();
-        int height = Integer.parseInt(heightField.getText());
-        int weight = Integer.parseInt(weightField.getText());
         
         if(name.equals("")|| ageField.getText().isEmpty() || heightField.getText().isEmpty() || weightField.getText().isEmpty()){
-                 JOptionPane.showMessageDialog(null, "Please enter all the fields!");
-                 return;
-            }
+            JOptionPane.showMessageDialog(null, "Please enter all the fields!");
+            return;
+        }
+        
+        int age = 0;
+        int height = 0;
+        int weight = 0;
         
         try{
-            if((age > 110 ) || (age < 1)){
-                 JOptionPane.showMessageDialog(null, "Please enter a Valid age!");
-                 return;
-            }
-            
-        } catch(NumberFormatException e){
-         JOptionPane.showMessageDialog(null, "Please enter number for Age, Height and Weight!");   
+            age = Integer.parseInt(ageField.getText());
+            height = Integer.parseInt(heightField.getText());
+            weight = Integer.parseInt(weightField.getText());
+        } catch (NumberFormatException e){
+            JOptionPane.showMessageDialog(null, "Age, Height and Weight must be integers not Strings!");
+            return;
+        }
+        
+        if((age > 110 ) || (age < 1)){
+             JOptionPane.showMessageDialog(null, "Please enter a Valid age!");
+             return;
         }
         
         patientController.insertPatients(name, age, gender, height, weight);

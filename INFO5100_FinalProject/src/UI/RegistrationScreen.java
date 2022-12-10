@@ -1,5 +1,6 @@
 package UI;
 
+import Controller.OrganizationController;
 import Controller.UsersController;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
@@ -12,6 +13,7 @@ import org.apache.log4j.Logger;
  */
 public class RegistrationScreen extends javax.swing.JPanel {
 
+    private OrganizationController organizationController;
     private UsersController usersController;
     private JPanel rightPanel;
     static Logger log = Logger.getLogger(RegistrationScreen.class.getName());
@@ -20,6 +22,7 @@ public class RegistrationScreen extends javax.swing.JPanel {
         initComponents();
         this.rightPanel = rightPanel;
         this.usersController = new UsersController();
+        this.organizationController = new OrganizationController();
 
     }
 
@@ -301,6 +304,7 @@ public class RegistrationScreen extends javax.swing.JPanel {
         log.info("Registration Completed.!!");
 
         usersController.insertUser(Name, UserName, Password, Country, EmailId, Enterprise, Organization, Contact);
+        organizationController.insertOrg(Name, Organization, Enterprise, Country);
         JOptionPane.showMessageDialog(this, "User Created Successfully!!..");
         log.info("User Created Successfully!!..");
         txtEmail.setText(null);

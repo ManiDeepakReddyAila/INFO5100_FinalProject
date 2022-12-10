@@ -476,105 +476,25 @@ public class Hospital extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnRejectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRejectActionPerformed
-        // TODO add your handling code here:
-        DefaultTableModel model = (DefaultTableModel) tblClothingRtl.getModel();
-        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-        String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
         int selectedRow = tblClothingRtl.getSelectedRow();
         if(selectedRow == -1){
             JOptionPane.showMessageDialog(null,"Select a row before choosing to view/delete record", " Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
         String name = (String) tblClothingRtl.getValueAt(selectedRow, 1);
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fp?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "Deepak@1999");
-            Statement myStatement = con.createStatement();
-
-            String query = "Update hospital_requests set status='REJECTED' where patient_name='" + name + "'";
-            myStatement.executeUpdate(query);
-            JOptionPane.showMessageDialog(this, "Request Rejected!!");
-            log.info("Request Rejected!!");
-            model.setRowCount(0);
-            String query1 = "Select * from hospital_requests";
-            ResultSet rs = myStatement.executeQuery(query1);
-            while (rs.next()) {
-                String hospital_name = rs.getString("hospital_name");
-                String patient_name = rs.getString("patient_name");
-                String report_date = rs.getString("report_date");
-                String lab_name = rs.getString("lab_name");
-                String test_name = rs.getString("test_name");
-                String status = rs.getString("status");
-                String description = rs.getString("description");
-
-                Object row[] = new Object[7];
-                row[0] = hospital_name;
-                row[1] = patient_name;
-                row[2] = report_date;
-                row[3] = lab_name;
-                row[4] = test_name;
-                row[5] = status;
-                row[6] = description;
-                model.addRow(row);
-
-            }
-            con.close();
-        } //System.out.println("Inserted data");
-        catch (Exception E) {
-            JOptionPane.showMessageDialog(this, E + "Error in DB connection");
-            log.error("Error in DB connection");
-        }
+        hospitalController.updateStatus("REJECTED", name);
+        populateTable();
     }//GEN-LAST:event_btnRejectActionPerformed
 
     private void btnApproveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApproveActionPerformed
-        // TODO add your handling code here:
-        DefaultTableModel model = (DefaultTableModel) tblClothingRtl.getModel();
-        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-        String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
         int selectedRow = tblClothingRtl.getSelectedRow();
         if(selectedRow == -1){
             JOptionPane.showMessageDialog(null,"Select a row before choosing to view/delete record", " Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
         String name = (String) tblClothingRtl.getValueAt(selectedRow, 1);
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fp?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "Deepak@1999");
-            Statement myStatement = con.createStatement();
-
-            String query = "Update hospital_requests set status='APPROVED' where patient_name='" + name + "'";
-            myStatement.executeUpdate(query);
-            JOptionPane.showMessageDialog(this, "Request Approved!!");
-            log.info("Request Approved!!");
-            model.setRowCount(0);
-            String query1 = "Select * from hospital_requests";
-            ResultSet rs = myStatement.executeQuery(query1);
-            while (rs.next()) {
-                String hospital_name = rs.getString("hospital_name");
-                String patient_name = rs.getString("patient_name");
-                String report_date = rs.getString("report_date");
-                String lab_name = rs.getString("lab_name");
-                String test_name = rs.getString("test_name");
-                String status = rs.getString("status");
-                String description = rs.getString("description");
-
-                Object row[] = new Object[7];
-                row[0] = hospital_name;
-                row[1] = patient_name;
-                row[2] = report_date;
-                row[3] = lab_name;
-                row[4] = test_name;
-                row[5] = status;
-                row[6] = description;
-                model.addRow(row);
-
-            }
-            con.close();
-        } //System.out.println("Inserted data");
-        catch (Exception E) {
-            JOptionPane.showMessageDialog(this, E + "Error in DB connection");
-            log.error("Error in DB connection");
-        }
+        hospitalController.updateStatus("APPROVED", name);
+        populateTable();
     }//GEN-LAST:event_btnApproveActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed

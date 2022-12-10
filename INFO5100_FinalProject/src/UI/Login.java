@@ -4,29 +4,28 @@
  */
 package UI;
 
-import Organization.ClothingRetailerScreen.ClothingRetailerMain;
-import Organization.Hospitals.HospitalMain;
-import Organization.TransportScreens.TransportMain;
-import Organization.TransportScreens.TransportMain1;
-import Organization.VaccineManufacturers.MainVaccineManufacturers;
-import Organization.WarehouseScreens.FoodMarketMain;
+import Organization.ClothingRetailerScreen.Hospital;
+import Organization.HospitalsDummy.HospitalMain;
+import Organization.TransportScreens.Healthcamp;
+import Organization.TransportScreens.HealthcampDoctor;
+import Organization.VaccineManufacturers.Pharmacy;
+import Organization.WarehouseScreens.Lab;
 import Screens.HierarchyManage;
-import UIMedicalEnterprise.Bloodbank.BloodBankMain;
+import UIMedicalEnterprise.Bloodbank.Sponsor;
 import Users.UserAccount;
-import VoluntaryEnterprise.Fundraiser;
 import java.awt.CardLayout;
 import java.sql.*;
-import java.awt.event.HierarchyListener;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
-import UIMedicalEnterprise.MedicalEquipManuf.MainMedicalEquipManuf;
+import UIMedicalEnterprise.MedicalEquipManuf.Account;
+import VoluntaryEnterprise.Fundraiser;
 import org.apache.log4j.Logger;
 
 /**
  *
- * @author saideepak
+ * @author aesha
  */
 public class Login extends javax.swing.JFrame {
 
@@ -35,15 +34,15 @@ public class Login extends javax.swing.JFrame {
      */
     public HierarchyManage hr;
     public Fundraiser fr;
-    public FoodMarketMain fm;
-    public ClothingRetailerMain crm;
-    public TransportMain tm;
-    public TransportMain1 tm1;
+    public Lab fm;
+    public Hospital crm;
+    public Healthcamp tm;
+    public HealthcampDoctor tm1;
     public createRequests cr;
     public HospitalMain hm;
-    public MainVaccineManufacturers vm;
-    public MainMedicalEquipManuf mef;
-    public BloodBankMain bbm;
+    public Pharmacy vm;
+    public Account mef;
+    public Sponsor bbm;
     static Logger log = Logger.getLogger(Login.class.getName());
 
     public Login() {
@@ -271,23 +270,22 @@ public class Login extends javax.swing.JFrame {
                         this.dispose();
                         return;
                     } else if (DBOrg.equalsIgnoreCase("Lab")) {
-                        
-                        fm = new FoodMarketMain();
+                        fm = new Lab();
                         fm.setVisible(true);
                         this.dispose();
                         return;
                     } else if (DBOrg.equalsIgnoreCase("Hospital")) {
-                        crm = new ClothingRetailerMain();
+                        crm = new Hospital();
                         crm.setVisible(true);
                         this.dispose();
                         return;
                     } else if (DBOrg.equalsIgnoreCase("Healthcamp") && !DBUsername.contains("doc")) {
-                        tm = new TransportMain();
+                        tm = new Healthcamp();
                         tm.setVisible(true);
                         this.dispose();
                         return;
                     } else if (DBOrg.equalsIgnoreCase("Healthcamp") && DBUsername.contains("doc")) {
-                        tm1 = new TransportMain1();
+                        tm1 = new HealthcampDoctor(DBUsername);
                         tm1.setVisible(true);
                         this.dispose();
                         return;
@@ -296,33 +294,18 @@ public class Login extends javax.swing.JFrame {
                         cr.setVisible(true);
                         this.dispose();
                         return;
-                    } else if (DBOrg.equalsIgnoreCase("Government")) {
-                        cr = new createRequests();
-                        cr.setVisible(true);
-                        this.dispose();
-                        return;
-                    } else if (DBOrg.equalsIgnoreCase("NDRF")) {
-                        cr = new createRequests();
-                        cr.setVisible(true);
-                        this.dispose();
-                        return;
-                    } else if (DBOrg.equalsIgnoreCase("Hospitals")) {
-                        hm = new HospitalMain();
-                        hm.setVisible(true);
-                        this.dispose();
-                        return;
-                    } else if (DBOrg.equalsIgnoreCase("Vaccine Manufacturer")) {
-                        vm = new MainVaccineManufacturers();
+                    }  else if (DBOrg.equalsIgnoreCase("Pharmacy")) {
+                        vm = new Pharmacy();
                         vm.setVisible(true);
                         this.dispose();
                         return;
-                    } else if (DBOrg.equalsIgnoreCase("Medical Equipments")) {
-                        mef = new MainMedicalEquipManuf();
+                    } else if (DBOrg.equalsIgnoreCase("Account")) {
+                        mef = new Account();
                         mef.setVisible(true);
                         this.dispose();
                         return;
-                    } else if (DBOrg.equalsIgnoreCase("Blood Bank")) {
-                        bbm = new BloodBankMain();
+                    } else if (DBOrg.equalsIgnoreCase("Sponsor")) {
+                        bbm = new Sponsor(DBUsername);
                         bbm.setVisible(true);
                         this.dispose();
                         return;
@@ -369,6 +352,7 @@ public class Login extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */

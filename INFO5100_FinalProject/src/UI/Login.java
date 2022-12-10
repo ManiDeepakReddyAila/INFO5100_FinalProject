@@ -138,7 +138,6 @@ public class Login extends javax.swing.JFrame {
         jLabel1.setText("LOGIN");
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/user1.png"))); // NOI18N
-        jLabel3.setText("jLabel3");
 
         jLabel4.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 153, 255));

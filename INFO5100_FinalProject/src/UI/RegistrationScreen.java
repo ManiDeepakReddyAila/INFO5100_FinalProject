@@ -154,7 +154,7 @@ public class RegistrationScreen extends javax.swing.JPanel {
         jLabel11.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(51, 153, 255));
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel11.setText("WELCOME NEW USER!! ");
+        jLabel11.setText("WELCOME!! ");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

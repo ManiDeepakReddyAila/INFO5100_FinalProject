@@ -420,7 +420,7 @@
                   <Color blue="ff" green="99" red="33" type="rgb"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="WELCOME NEW USER!! "/>
+                <Property name="text" type="java.lang.String" value="WELCOME!! "/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel12">

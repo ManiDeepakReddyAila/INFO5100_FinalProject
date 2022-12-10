@@ -578,21 +578,11 @@ public class Hospital extends javax.swing.JFrame {
     }//GEN-LAST:event_btnApproveActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
         Random rand = new Random();
         String[] randomVitals = {"ECG is Abnormal, suggested Cardio Healthcamp", "Weak bone strength, suggested Orthopaedic"};
         String suggestion = randomVitals[rand.nextInt(randomVitals.length)];
         jLabel3.setText("Suggestion: " + suggestion);
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fp?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "Deepak@1999");
-            Statement myStatement = con.createStatement();
-            String query = "Update `patient_report` set suggestion = '" + suggestion + "' where name = '" + nameField.getText() + "'";
-            myStatement.executeUpdate(query);
-            con.close();
-        } catch (Exception E) {
-            JOptionPane.showMessageDialog(this, E + "Error in DB call");
-        }
+        hospitalController.updateSugestion(suggestion, nameField.getText());
         jButton4.setVisible(true);
         
     }//GEN-LAST:event_jButton3ActionPerformed

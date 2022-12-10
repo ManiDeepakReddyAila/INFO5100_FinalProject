@@ -363,8 +363,6 @@ public class HospitalMain extends javax.swing.JFrame {
                 row[3] = Requester;
                 row[4] = RequestedDate;
                 row[5] = status;
-                row[6] = ApprovalDate;
-                row[7] = Comments;
                 model.addRow(row);
             }
             con.close();

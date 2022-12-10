@@ -62,6 +62,23 @@ public class Hospital extends javax.swing.JFrame {
             jComboBox1.addItem(dr);
         }
     }
+    
+    public void populateTable(){
+        model = (DefaultTableModel) tblClothingRtl.getModel();
+        model.setRowCount(0);
+        ArrayList<HospitalRequests> hrr = hospitalController.getHospitalRequests();
+        for(HospitalRequests hr: hrr){
+            Object row[] = new Object[7];
+                row[0] = hr.getHospitalName();
+                row[1] = hr.getPatientName();
+                row[2] = hr.getReportDate();
+                row[3] = hr.getLabName();
+                row[4] = hr.getTestName();
+                row[5] = hr.getStatus();
+                row[6] = hr.getDescription();
+                model.addRow(row);
+        }
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

@@ -211,6 +211,7 @@ public class Login extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:String UserName = txtUserName.getText();
+        String UserName = txtUserName.getText();
         char[] passwordArr = txtPwd.getPassword();
         String password = String.valueOf(passwordArr);
         
@@ -249,7 +250,7 @@ public class Login extends javax.swing.JFrame {
                         this.dispose();
                         return;
                     }else if (org.equalsIgnoreCase("Ngo")) {
-                        cr = new createRequests();
+                        cr = new createRequests(u.getUsername());
                         cr.setVisible(true);
                         this.dispose();
                         return;

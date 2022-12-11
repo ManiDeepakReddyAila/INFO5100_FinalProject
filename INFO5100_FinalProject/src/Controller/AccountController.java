@@ -21,10 +21,10 @@ public class AccountController {
         ArrayList<Accounts> accountTable = new ArrayList<>();
         try {
             Statement statement = ConnectioinManager.getConnection().createStatement();
-            String query = "with temp as (SELECT a.*, b.test_name, b.lab_name FROM fp.healthcamp_requests a inner join fp.lab_requests b on a.patient_name = b.patient_name) select a.*, b.total_bill from temp a left join bill b on a.patient_name = b.patient_name";
+            String query = "SELECT a.*, b.test_name, b.lab_name FROM fp.healthcamp_requests a inner join fp.lab_requests b on a.patient_name = b.patient_name where a.status = 'APPROVED' and b.status='APPROVED'";
             ResultSet rs = statement.executeQuery(query);
             while (rs.next()) {
-                accountTable.add(new Accounts(rs.getString("patient_name"), rs.getString("lab_name"), rs.getString("test_name"), rs.getString("hospital_name"), rs.getString("healthcamp_name"), rs.getString("doctor_assigned"), rs.getInt("total_bill")));
+                accountTable.add(new Accounts(rs.getString("patient_name"), rs.getString("lab_name"), rs.getString("test_name"), rs.getString("hospital_name"), rs.getString("healthcamp_name"), rs.getString("doctor_assigned")));
             }
             rs.close();
         } catch (Exception ex) {

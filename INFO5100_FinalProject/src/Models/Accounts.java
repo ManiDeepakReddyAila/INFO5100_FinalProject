@@ -16,16 +16,14 @@ public class Accounts {
     private String hospitalName;
     private String healthcampName;
     private String doctor;
-    private int bill;
 
-    public Accounts(String patientName, String lab, String testName, String hospitalName, String healthcampName, String doctor, int bill) {
+    public Accounts(String patientName, String lab, String testName, String hospitalName, String healthcampName, String doctor) {
         this.patientName = patientName;
         this.lab = lab;
         this.testName = testName;
         this.hospitalName = hospitalName;
         this.healthcampName = healthcampName;
         this.doctor = doctor;
-        this.bill = bill;
     }
 
     public String getPatientName() {
@@ -74,19 +72,6 @@ public class Accounts {
 
     public void setDoctor(String doctor) {
         this.doctor = doctor;
-    }
-
-    public int getBill() {
-        return bill;
-    }
-
-    public void setBill(int bill) {
-        this.bill = bill;
-    }
-
-    
-    
-    
-    
+    }    
     
 }

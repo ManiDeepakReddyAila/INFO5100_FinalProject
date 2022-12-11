@@ -8,6 +8,8 @@ import Models.Patients;
 import Controller.LabController;
 import Controller.OrganizationController;
 import Controller.PatientsController;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -199,6 +201,8 @@ public class PatientPanel extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        String date = dateFormat.format(java.util.Calendar.getInstance().getTime());
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         String testName = "";
         if(jRadioButton1.isSelected()){
@@ -213,14 +217,14 @@ public class PatientPanel extends javax.swing.JPanel {
         if(!testName.equals("")){
             int selectedRow = jTable1.getSelectedRow();
             if(selectedRow == -1){
-                JOptionPane.showMessageDialog(null,"Select a row before choosing to view/delete record", " Warning", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null,"Please select a row", " Warning", JOptionPane.WARNING_MESSAGE);
                 return;
             }
             String name = (String) jTable1.getValueAt(selectedRow, 0);
             String lab = (String) jComboBox1.getSelectedItem();
             String status = "Pending";
             String description = jTextField1.getText();
-            labController.insertLabRequest(lab, name, testName, status, description);
+            labController.insertLabRequest(lab, name, testName, status, description, date);
             JOptionPane.showMessageDialog(null,"Lab Request has been created", "SUCCESS!", JOptionPane.INFORMATION_MESSAGE);
             jTextField1.setText("");
             buttonGroup1.clearSelection();

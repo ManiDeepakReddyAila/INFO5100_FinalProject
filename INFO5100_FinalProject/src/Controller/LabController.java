@@ -23,10 +23,10 @@ public class LabController {
         ArrayList<LabRequest> labRequests = new ArrayList<>();
         try {
             Statement statement = ConnectioinManager.getConnection().createStatement();
-            String query = "select * from lab_requests where name '" + name + "'";
+            String query = "select * from lab_requests where lab_name ='" + name + "'";
             ResultSet rs = statement.executeQuery(query);
             while (rs.next()) {
-                labRequests.add(new LabRequest(rs.getString("lab_name"), rs.getString("patient_name"), rs.getString("test_name"), rs.getString("status"), rs.getString("description")));
+                labRequests.add(new LabRequest(rs.getString("lab_name"), rs.getString("patient_name"), rs.getString("test_name"), rs.getString("status"), rs.getString("description"), rs.getString("date")));
             }
             rs.close();
         } catch (Exception ex) {
@@ -35,10 +35,10 @@ public class LabController {
         return labRequests;   
     }
     
-    public void updateStatus(String newStatus, String patientName){
+    public void updateStatus(String newStatus, String date){
         try {
             Statement myStatement = ConnectioinManager.getConnection().createStatement();
-            String query = "Update lab_requests set status='" + newStatus +  "' where patient_name='" + patientName + "'";
+            String query = "Update lab_requests set status='" + newStatus +  "' where date='" + date + "'";
             myStatement.executeUpdate(query);
 
         } catch (Exception E) {
@@ -46,10 +46,10 @@ public class LabController {
         }
     }
     
-    public void insertLabRequest(String lab, String name, String testName, String status, String description){
+    public void insertLabRequest(String lab, String name, String testName, String status, String description, String date){
         try {
             Statement myStatement = ConnectioinManager.getConnection().createStatement();
-            String query = "Insert into `lab_requests`" + "values('" + lab + "','" + name + "','" + testName + "','" + status + "','" + description + "')";
+            String query = "Insert into `lab_requests`" + "values('" + lab + "','" + name + "','" + testName + "','" + status + "','" + description + "','" + date + "')";
             myStatement.executeUpdate(query);
 
         } catch (Exception E) {

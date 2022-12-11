@@ -11,6 +11,7 @@ import Controller.PatientReportController;
 import UI.Login;
 import Models.PatientReports;
 import Controller.HealthcampController;
+import Controller.NotificationController;
 import UI.Login;
 import UI.PatientReport;
 import UI.PatientReport;
@@ -37,6 +38,7 @@ public class Hospital extends javax.swing.JFrame {
     private PatientReportController patientReportController;
     private HospitalController hospitalController;
     private OrganizationController organizationController;
+    private NotificationController notificationController;
     private DefaultTableModel model;
     static Logger log = Logger.getLogger(Hospital.class.getName());
 
@@ -46,6 +48,9 @@ public class Hospital extends javax.swing.JFrame {
     public Hospital(String username) {
         
         initComponents();
+        notificationController = new NotificationController();
+        jButton3.setVisible(false);
+        jButton4.setVisible(false);
         this.username = username;
         model = (DefaultTableModel) tblClothingRtl.getModel();
         healthcampController = new HealthcampController();
@@ -436,15 +441,23 @@ public class Hospital extends javax.swing.JFrame {
             return;
         }
         String name = (String) tblClothingRtl.getValueAt(selectedRow, 1);
-        ArrayList<PatientReports> prr = patientReportController.getPatientReports(name);
-        for(PatientReports pr: prr){
-            nameField.setText(pr.getName());
-            vitalsField.setText(pr.getVitals());
-            hgField.setText(pr.getHg());
-            htcField.setText(pr.getHtc());
-            wbcField.setText(pr.getWbc());
-            rbcField.setText(pr.getRbc());
+        String status = (String) tblClothingRtl.getValueAt(selectedRow, 5);
+        if(status.equals("APPROVED")){
+            ArrayList<PatientReports> prr = patientReportController.getPatientReports(name);
+            for(PatientReports pr: prr){
+                nameField.setText(pr.getName());
+                vitalsField.setText(pr.getVitals());
+                hgField.setText(pr.getHg());
+                htcField.setText(pr.getHtc());
+                wbcField.setText(pr.getWbc());
+                rbcField.setText(pr.getRbc());
+            }
+            jButton3.setVisible(true);
+            jButton4.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(null,"Approved requests only!", " Warning", JOptionPane.WARNING_MESSAGE);
         }
+        
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -476,9 +489,12 @@ public class Hospital extends javax.swing.JFrame {
             return;
         }
         String name = (String) tblClothingRtl.getValueAt(selectedRow, 1);
-        hospitalController.updateStatus("REJECTED", name);
+        String date = (String) tblClothingRtl.getValueAt(selectedRow, 2);
+        hospitalController.updateStatus("REJECTED", date);
         JOptionPane.showMessageDialog(null,"Hospital Request has been rejected", "Sorry!", JOptionPane.INFORMATION_MESSAGE);
         populateTable(username);
+        String m = JOptionPane.showInputDialog("Rejection Comment?");
+        notificationController.insertNotification("hospital", "volunteer", "0", name + ": " + m, date);
     }//GEN-LAST:event_btnRejectActionPerformed
 
     private void btnApproveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApproveActionPerformed
@@ -488,7 +504,8 @@ public class Hospital extends javax.swing.JFrame {
             return;
         }
         String name = (String) tblClothingRtl.getValueAt(selectedRow, 1);
-        hospitalController.updateStatus("APPROVED", name);
+        String date = (String) tblClothingRtl.getValueAt(selectedRow, 2);
+        hospitalController.updateStatus("APPROVED", date);
         JOptionPane.showMessageDialog(null,"Hospital Request has been approved", "Success!", JOptionPane.INFORMATION_MESSAGE);
         populateTable(username);
     }//GEN-LAST:event_btnApproveActionPerformed
@@ -500,11 +517,18 @@ public class Hospital extends javax.swing.JFrame {
         String suggestion = randomVitals[rand.nextInt(randomVitals.length)];
         jLabel3.setText("Suggestion: " + suggestion);
         hospitalController.updateSugestion(suggestion, nameField.getText());
-//        jButton4.setVisible(true);
+        jButton3.setVisible(false);
         
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        String date = dateFormat.format(java.util.Calendar.getInstance().getTime());
+        int selectedRow = tblClothingRtl.getSelectedRow();
+        if(selectedRow == -1){
+            JOptionPane.showMessageDialog(null,"Select a row before choosing to view/delete record", " Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
         PatientReport newjFrame = new PatientReport(nameField.getText());
         newjFrame.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
@@ -522,9 +546,21 @@ public class Hospital extends javax.swing.JFrame {
         String status = "Pending";
         String doctorAssigned = "Not Assigned";
         String hospitalName = (String) tblClothingRtl.getValueAt(selectedRow, 0);
-
-        healthcampController.insertHealthcampRequests(hospitalName, patientName, status, date, healthcampName, doctorAssigned);
-        JOptionPane.showMessageDialog(null,"Healthcamp Request has been created", "Success!", JOptionPane.INFORMATION_MESSAGE);
+        String statusNew = (String) tblClothingRtl.getValueAt(selectedRow, 5);
+        if(statusNew.equals("APPROVED")){
+            healthcampController.insertHealthcampRequests(hospitalName, patientName, status, date, healthcampName, doctorAssigned);
+            JOptionPane.showMessageDialog(null,"Healthcamp Request has been created", "Success!", JOptionPane.INFORMATION_MESSAGE);
+            nameField.setText("");
+            vitalsField.setText("");
+            hgField.setText("");
+            htcField.setText("");
+            wbcField.setText("");
+            rbcField.setText("");
+            jButton4.setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(null,"Approved requests only!", " Warning", JOptionPane.WARNING_MESSAGE);
+        }
+        
     }//GEN-LAST:event_jButton5ActionPerformed
 
     /**

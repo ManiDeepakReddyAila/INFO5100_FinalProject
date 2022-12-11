@@ -78,7 +78,7 @@ public class PatientReportController {
     public void insertPatientReport(String name, String vitals, String hg, String htc, String wbc, String rbc){
         try {
             Statement myStatement = ConnectioinManager.getConnection().createStatement();
-            String query = "Insert into `patient_report` (name, vitals, hg, htc, wbc, rbc)" + "values('" + name + "','" + vitals + "','" + hg + "','" + htc + "','" + wbc + "','" + rbc + "')";
+            String query = "Insert into `patient_report` " + "values('" + name + "','" + vitals + "','" + hg + "','" + htc + "','" + wbc + "','" + rbc + "','','')";
             myStatement.executeUpdate(query);
 
         } catch (Exception E) {

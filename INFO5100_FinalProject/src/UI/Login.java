@@ -104,6 +104,7 @@ public class Login extends javax.swing.JFrame {
         txtPwd.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Calibri", 0, 48)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 102, 0));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText(" LOG IN");
 

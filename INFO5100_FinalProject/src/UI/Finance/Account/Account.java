@@ -43,7 +43,6 @@ public class Account extends javax.swing.JFrame {
         ArrayList<String> healthcamps = billController.getHealthcampNames();
         jComboBox1.removeAllItems();
         for(String name: healthcamps){
-            System.out.println(name);
             jComboBox1.addItem(name);
         }
         jLabel2.setVisible(false);
@@ -162,13 +161,13 @@ public class Account extends javax.swing.JFrame {
 
         tblMedicalEquip.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Patient_name", "Lab", "Test_name", "Hospital", "Healthcamp", "Doctor"
+                "Patient_name", "Lab", "Test_name", "Hospital", "Healthcamp", "Doctor", "Bill"
             }
         ));
         jScrollPane1.setViewportView(tblMedicalEquip);

@@ -61,7 +61,7 @@ public class PatientRegistration extends javax.swing.JPanel {
         submitButton.setBackground(new java.awt.Color(0, 102, 0));
         submitButton.setFont(new java.awt.Font("Tw Cen MT", 0, 24)); // NOI18N
         submitButton.setForeground(new java.awt.Color(255, 255, 255));
-        submitButton.setText("Submit");
+        submitButton.setText("SUBMIT");
         submitButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 submitButtonActionPerformed(evt);

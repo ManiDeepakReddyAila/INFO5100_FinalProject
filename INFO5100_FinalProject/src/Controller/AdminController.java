@@ -42,4 +42,15 @@ public class AdminController {
         }
         return adminRequests;   
     }
+    
+    public void updateStatus(String newStatus, String healthcampName){
+        try {
+            Statement myStatement = ConnectioinManager.getConnection().createStatement();
+            String query = "Update admin_requests set status='" + newStatus +  "' where healthcamp_name='" + healthcampName + "'";
+            myStatement.executeUpdate(query);
+
+        } catch (Exception E) {
+            
+        }
+    }
 }

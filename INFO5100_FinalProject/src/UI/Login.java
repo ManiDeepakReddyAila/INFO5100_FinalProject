@@ -81,7 +81,7 @@ public class Login extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(0, 102, 0));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/—Pngtree—everyone loves public welfare illustration_4629830.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/welcomeimage.png"))); // NOI18N
         jLabel2.setPreferredSize(new java.awt.Dimension(100, 100));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -157,8 +157,7 @@ public class Login extends javax.swing.JFrame {
                                         .addGap(193, 193, 193)
                                         .addGroup(RightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                             .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jButton2))
-                                        .addGap(159, 159, 159))
+                                            .addComponent(jButton2)))
                                     .addGroup(RightPanelLayout.createSequentialGroup()
                                         .addGroup(RightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)

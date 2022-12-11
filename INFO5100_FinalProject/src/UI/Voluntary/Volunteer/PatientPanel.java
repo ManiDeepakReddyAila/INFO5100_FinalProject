@@ -71,7 +71,7 @@ public class PatientPanel extends javax.swing.JPanel {
         lblLoggedInAs.setFont(new java.awt.Font("Tw Cen MT", 0, 36)); // NOI18N
         lblLoggedInAs.setForeground(new java.awt.Color(0, 102, 0));
         lblLoggedInAs.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblLoggedInAs.setText("Patient Panel");
+        lblLoggedInAs.setText("PATIENT PANEL");
         lblLoggedInAs.setToolTipText("");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(

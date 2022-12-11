@@ -44,7 +44,7 @@ public class PatientRegistration extends javax.swing.JPanel {
         lblLoggedInAs.setFont(new java.awt.Font("Lucida Grande", 0, 36)); // NOI18N
         lblLoggedInAs.setForeground(new java.awt.Color(0, 102, 0));
         lblLoggedInAs.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblLoggedInAs.setText("Register Patient !");
+        lblLoggedInAs.setText("REGISTER PATIENT");
         lblLoggedInAs.setToolTipText("");
 
         jLabel1.setFont(new java.awt.Font("Tw Cen MT", 0, 24)); // NOI18N

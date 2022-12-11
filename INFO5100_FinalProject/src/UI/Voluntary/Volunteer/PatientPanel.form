@@ -108,7 +108,7 @@
           <Color blue="0" green="66" red="0" type="rgb"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="Patient Panel"/>
+        <Property name="text" type="java.lang.String" value="PATIENT PANEL"/>
         <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
     </Component>

@@ -6,16 +6,11 @@ package UI.Service.Healthcamp;
 
 import Models.HealthcampRequests;
 import Controller.HealthcampController;
+import Controller.NotificationController;
 import Controller.OrganizationController;
 import UI.Login;
-import UI.Login;
-import java.awt.CardLayout;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -32,6 +27,7 @@ public class Healthcamp extends javax.swing.JFrame {
      */
     private OrganizationController organizationController;
     private HealthcampController healthcampController;
+    private NotificationController notificationController;
     DefaultTableModel model;
     static Logger log = Logger.getLogger(Healthcamp.class.getName());
 
@@ -39,6 +35,7 @@ public class Healthcamp extends javax.swing.JFrame {
         initComponents();
         organizationController = new OrganizationController();
         healthcampController = new HealthcampController();
+        notificationController = new NotificationController();
 
         populateTable();
         ArrayList<String> doctorNames = organizationController.getDoctorNames1();
@@ -213,17 +210,22 @@ public class Healthcamp extends javax.swing.JFrame {
                                 .addGap(26, 26, 26)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1015, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(271, 271, 271)
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnApprove, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
-                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addGap(271, 271, 271)
+                                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                                        .addContainerGap()
+                                        .addComponent(btnApprove, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)))
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addGap(381, 381, 381)
+                                        .addComponent(btnApprove1, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addGap(29, 29, 29)
                                         .addComponent(btnReject, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
-                                        .addComponent(jButton4))
-                                    .addComponent(btnApprove1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addComponent(jButton4)))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -237,7 +239,7 @@ public class Healthcamp extends javax.swing.JFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(51, 51, 51)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(80, 80, 80)
+                .addGap(70, 70, 70)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnApprove)
                     .addComponent(btnReject)
@@ -246,7 +248,7 @@ public class Healthcamp extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnApprove1)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(358, Short.MAX_VALUE))
+                .addContainerGap(368, Short.MAX_VALUE))
         );
 
         RightPanel.add(jPanel3, "card2");
@@ -279,6 +281,8 @@ public class Healthcamp extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnApproveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApproveActionPerformed
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        String date = dateFormat.format(java.util.Calendar.getInstance().getTime());
         int selectedRow = tblTransport.getSelectedRow();
         if(selectedRow == -1){
             JOptionPane.showMessageDialog(null,"Select a row before choosing to view/delete record", " Warning", JOptionPane.WARNING_MESSAGE);
@@ -288,9 +292,12 @@ public class Healthcamp extends javax.swing.JFrame {
         healthcampController.updateStatus("APPROVED", name);
         JOptionPane.showMessageDialog(null,"Request has been Approved", "Success!", JOptionPane.INFORMATION_MESSAGE);
         populateTable();
+//        notificationController.insertNotification("healthcamp", "volunteer", "0", "Request has been Approved!", date);
     }//GEN-LAST:event_btnApproveActionPerformed
 
     private void btnRejectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRejectActionPerformed
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        String date = dateFormat.format(java.util.Calendar.getInstance().getTime());
         int selectedRow = tblTransport.getSelectedRow();
         if(selectedRow == -1){
             JOptionPane.showMessageDialog(null,"Select a row before choosing to view/delete record", " Warning", JOptionPane.WARNING_MESSAGE);
@@ -300,6 +307,9 @@ public class Healthcamp extends javax.swing.JFrame {
         healthcampController.updateStatus("REJECTED", name);
         JOptionPane.showMessageDialog(null,"Request has been Rejected", "Sorry!", JOptionPane.INFORMATION_MESSAGE);
         populateTable();
+        String m = JOptionPane.showInputDialog("Rejection Comment?");
+        System.out.println(m);
+        notificationController.insertNotification("healthcamp", "volunteer", "0", m, date);
     }//GEN-LAST:event_btnRejectActionPerformed
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
@@ -388,6 +398,8 @@ public class Healthcamp extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Healthcamp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 

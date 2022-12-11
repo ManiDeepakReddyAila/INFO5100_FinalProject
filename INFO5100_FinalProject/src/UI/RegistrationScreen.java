@@ -12,7 +12,7 @@ import org.apache.log4j.Logger;
 
 /**
  *
- * @author aesha
+ * @author saideepak
  */
 public class RegistrationScreen extends javax.swing.JPanel {
 

@@ -28,13 +28,19 @@ public class TasksRequest extends javax.swing.JPanel {
      */
     private AdminController adminController;
     private JPanel RightPanel;
+    private DefaultTableModel md;
 
     public TasksRequest(JPanel RightPanel) {
         initComponents();
         adminController = new AdminController();
         this.RightPanel = RightPanel;
+        populateTable();
+    }
+    
+    public void populateTable(){
         ArrayList<AdminRequests> adminReqs = adminController.getAdminRequests();
-        DefaultTableModel md = (DefaultTableModel) tblManageRequest.getModel();
+        md = (DefaultTableModel) tblManageRequest.getModel();
+        md.setRowCount(0);
         for(AdminRequests a: adminReqs){
             Object row[] = new Object[5];
             row[0] = a.getHealthcampName();
@@ -61,8 +67,6 @@ public class TasksRequest extends javax.swing.JPanel {
         tblManageRequest = new javax.swing.JTable();
         btnApprove = new javax.swing.JButton();
         btnReject = new javax.swing.JButton();
-        btnviewpendingreq = new javax.swing.JButton();
-        btnviewrequests = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -105,26 +109,6 @@ public class TasksRequest extends javax.swing.JPanel {
             }
         });
 
-        btnviewpendingreq.setBackground(new java.awt.Color(102, 153, 255));
-        btnviewpendingreq.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        btnviewpendingreq.setForeground(new java.awt.Color(255, 255, 255));
-        btnviewpendingreq.setText("View Pending Requests");
-        btnviewpendingreq.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnviewpendingreqActionPerformed(evt);
-            }
-        });
-
-        btnviewrequests.setBackground(new java.awt.Color(102, 153, 255));
-        btnviewrequests.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        btnviewrequests.setForeground(new java.awt.Color(255, 255, 255));
-        btnviewrequests.setText("View All Requests");
-        btnviewrequests.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnviewrequestsActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -133,11 +117,6 @@ public class TasksRequest extends javax.swing.JPanel {
                 .addGap(130, 130, 130)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 783, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(191, 191, 191)
-                        .addComponent(btnviewpendingreq)
-                        .addGap(33, 33, 33)
-                        .addComponent(btnviewrequests, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(221, 221, 221)
                         .addComponent(jLabel1))
@@ -153,11 +132,7 @@ public class TasksRequest extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(66, 66, 66)
                 .addComponent(jLabel1)
-                .addGap(117, 117, 117)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnviewpendingreq)
-                    .addComponent(btnviewrequests))
-                .addGap(29, 29, 29)
+                .addGap(169, 169, 169)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -181,37 +156,33 @@ public class TasksRequest extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnApproveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApproveActionPerformed
-        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-        String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
-        
-        
+        int selectedRow = tblManageRequest.getSelectedRow();
+        if(selectedRow == -1){
+            JOptionPane.showMessageDialog(null,"Select a row before choosing to view/delete record", " Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        String healthcampName = (String) tblManageRequest.getValueAt(selectedRow, 0);
+        adminController.updateStatus("APPROVED", healthcampName);
+        JOptionPane.showMessageDialog(null,"Request Approved!", " Info", JOptionPane.INFORMATION_MESSAGE);
+        populateTable();
     }//GEN-LAST:event_btnApproveActionPerformed
 
     private void btnRejectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRejectActionPerformed
-        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-        String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
-
-        
+        int selectedRow = tblManageRequest.getSelectedRow();
+        if(selectedRow == -1){
+            JOptionPane.showMessageDialog(null,"Select a row before choosing to view/delete record", " Info", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        String healthcampName = (String) tblManageRequest.getValueAt(selectedRow, 0);
+        adminController.updateStatus("REJECTED", healthcampName);
+        JOptionPane.showMessageDialog(null,"Request Rejected!", " Sorry", JOptionPane.INFORMATION_MESSAGE);
+        populateTable();
     }//GEN-LAST:event_btnRejectActionPerformed
-
-    private void btnviewpendingreqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnviewpendingreqActionPerformed
-        
-                
-        
-        
-    }//GEN-LAST:event_btnviewpendingreqActionPerformed
-
-    private void btnviewrequestsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnviewrequestsActionPerformed
-        
-
-    }//GEN-LAST:event_btnviewrequestsActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnApprove;
     private javax.swing.JButton btnReject;
-    private javax.swing.JButton btnviewpendingreq;
-    private javax.swing.JButton btnviewrequests;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

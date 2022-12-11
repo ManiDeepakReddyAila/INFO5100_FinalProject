@@ -57,38 +57,38 @@ public class RegistrationScreen extends javax.swing.JPanel {
 
         panelRegister.setBackground(new java.awt.Color(222, 242, 218));
 
-        jLabel1.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tw Cen MT", 0, 24)); // NOI18N
         jLabel1.setText("Username:");
 
         txtUsername.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
 
-        jLabel2.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tw Cen MT", 0, 24)); // NOI18N
         jLabel2.setText("Password: ");
 
-        jLabel3.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Tw Cen MT", 0, 24)); // NOI18N
         jLabel3.setText("Confirm Password:");
 
-        jLabel4.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Tw Cen MT", 0, 24)); // NOI18N
         jLabel4.setText("Name:");
 
         txtName.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
 
-        jLabel5.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Tw Cen MT", 0, 24)); // NOI18N
         jLabel5.setText("Email ID:");
 
         txtEmail.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
 
-        jLabel6.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Tw Cen MT", 0, 24)); // NOI18N
         jLabel6.setText("Country:");
 
-        jLabel7.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Tw Cen MT", 0, 24)); // NOI18N
         jLabel7.setText("Enterprise:");
 
-        jLabel8.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Tw Cen MT", 0, 24)); // NOI18N
         jLabel8.setText("Organisation:");
 
         btnRegister.setBackground(new java.awt.Color(0, 102, 0));
-        btnRegister.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        btnRegister.setFont(new java.awt.Font("Tw Cen MT", 0, 24)); // NOI18N
         btnRegister.setForeground(new java.awt.Color(255, 255, 255));
         btnRegister.setText("REGISTER");
         btnRegister.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -113,7 +113,7 @@ public class RegistrationScreen extends javax.swing.JPanel {
             }
         });
 
-        jLabel9.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Tw Cen MT", 0, 24)); // NOI18N
         jLabel9.setText("Contact:");
 
         txtcontact.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
@@ -124,10 +124,11 @@ public class RegistrationScreen extends javax.swing.JPanel {
         });
 
         jLabel10.setFont(new java.awt.Font("Calibri", 0, 36)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(0, 102, 0));
         jLabel10.setText("REGISTER A NEW PATIENT HERE");
 
         btnBack.setBackground(new java.awt.Color(0, 102, 0));
-        btnBack.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        btnBack.setFont(new java.awt.Font("Tw Cen MT", 0, 24)); // NOI18N
         btnBack.setForeground(new java.awt.Color(255, 255, 255));
         btnBack.setText("GO BACK");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -198,10 +199,10 @@ public class RegistrationScreen extends javax.swing.JPanel {
                 .addComponent(jLabel10)
                 .addGap(443, 443, 443))
             .addGroup(panelRegisterLayout.createSequentialGroup()
-                .addGap(439, 439, 439)
-                .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
-                .addComponent(btnRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(499, 499, 499)
+                .addComponent(btnBack)
+                .addGap(53, 53, 53)
+                .addComponent(btnRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -214,7 +215,7 @@ public class RegistrationScreen extends javax.swing.JPanel {
             .addGroup(panelRegisterLayout.createSequentialGroup()
                 .addGap(89, 89, 89)
                 .addComponent(jLabel10)
-                .addGap(86, 86, 86)
+                .addGap(55, 55, 55)
                 .addGroup(panelRegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(panelRegisterLayout.createSequentialGroup()
                         .addGroup(panelRegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -257,7 +258,7 @@ public class RegistrationScreen extends javax.swing.JPanel {
                 .addGroup(panelRegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(73, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

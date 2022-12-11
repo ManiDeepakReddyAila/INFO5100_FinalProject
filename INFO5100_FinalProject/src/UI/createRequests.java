@@ -78,14 +78,18 @@ public class createRequests extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Patient Registration");
+        jButton1.setFont(new java.awt.Font("Tw Cen MT", 0, 24)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(0, 102, 0));
+        jButton1.setText("PATIENT REGISTRATION");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Patient Panel");
+        jButton2.setFont(new java.awt.Font("Tw Cen MT", 0, 24)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(0, 102, 0));
+        jButton2.setText("PATIENT PANEL");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -128,7 +132,7 @@ public class createRequests extends javax.swing.JFrame {
                 .addComponent(jButton1)
                 .addGap(18, 18, 18)
                 .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 505, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 483, Short.MAX_VALUE)
                 .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -137,11 +141,14 @@ public class createRequests extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
+        jLabel1.setFont(new java.awt.Font("Tw Cen MT", 0, 24)); // NOI18N
         jLabel1.setText("Healthcamp Name");
 
+        jLabel2.setFont(new java.awt.Font("Tw Cen MT", 0, 24)); // NOI18N
         jLabel2.setText("Number Of Beds");
 
-        jButton4.setText("Submit Request");
+        jButton4.setFont(new java.awt.Font("Tw Cen MT", 0, 24)); // NOI18N
+        jButton4.setText("SUBMIT REQUEST");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -163,14 +170,14 @@ public class createRequests extends javax.swing.JFrame {
                     .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(452, Short.MAX_VALUE)
+                .addContainerGap(368, Short.MAX_VALUE)
                 .addComponent(jButton4)
                 .addGap(423, 423, 423))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(266, 266, 266)
+                .addGap(229, 229, 229)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -180,7 +187,7 @@ public class createRequests extends javax.swing.JFrame {
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(53, 53, 53)
                 .addComponent(jButton4)
-                .addContainerGap(441, Short.MAX_VALUE))
+                .addContainerGap(460, Short.MAX_VALUE))
         );
 
         jSplitPane1.setRightComponent(jPanel3);

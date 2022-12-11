@@ -60,10 +60,10 @@ public class HealthcampController {
         return healthcampRequests; 
     }
     
-    public void updateStatus(String newStatus, String patientName){
+    public void updateStatus(String newStatus, String date){
         try {
             Statement myStatement = ConnectioinManager.getConnection().createStatement();
-            String query = "Update healthcamp_requests set status='"+ newStatus +"' where patient_name='" + patientName + "'";
+            String query = "Update healthcamp_requests set status='"+ newStatus +"' where report_date='" + date + "'";
             myStatement.executeUpdate(query);
 
         } catch (Exception E) {
@@ -74,7 +74,7 @@ public class HealthcampController {
     public void updateDoctorAssigned(String doctorAssigned, String patientName){
         try {
             Statement myStatement = ConnectioinManager.getConnection().createStatement();
-            String query = "Update healthcamp_requests set doctor_assigned='" + doctorAssigned + "' where patient_name='" + patientName + "'";
+            String query = "Update healthcamp_requests set doctor_assigned='" + doctorAssigned + "' where report_date='" + patientName + "'";
             myStatement.executeUpdate(query);
 
         } catch (Exception E) {

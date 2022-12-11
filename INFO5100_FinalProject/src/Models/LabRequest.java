@@ -15,18 +15,28 @@ public class LabRequest {
     private String testName;
     private String status;
     private String description;
+    private String date;
 
     public LabRequest() {
     }
 
-    public LabRequest(String labName, String patientName, String testName, String status, String description) {
+    public LabRequest(String labName, String patientName, String testName, String status, String description, String date) {
         this.labName = labName;
         this.patientName = patientName;
         this.testName = testName;
         this.status = status;
         this.description = description;
+        this.date = date;
     }
 
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+    
     public String getLabName() {
         return labName;
     }

@@ -43,6 +43,7 @@ public class Account extends javax.swing.JFrame {
         ArrayList<String> healthcamps = billController.getHealthcampNames();
         jComboBox1.removeAllItems();
         for(String name: healthcamps){
+            System.out.println(name);
             jComboBox1.addItem(name);
         }
         jLabel2.setVisible(false);
@@ -54,14 +55,13 @@ public class Account extends javax.swing.JFrame {
         model.setRowCount(0);
         ArrayList<Accounts> acc = accountController.getHealthcampRequests();
         for(Accounts a: acc){
-            Object row[] = new Object[7];
+            Object row[] = new Object[6];
             row[0] = a.getPatientName();
             row[1] = a.getLab();
             row[2] = a.getTestName();
             row[3] = a.getHospitalName();
             row[4] = a.getHealthcampName();
             row[5] = a.getDoctor();
-            row[6] = a.getBill();
             model.addRow(row);
         }
     }
@@ -162,13 +162,13 @@ public class Account extends javax.swing.JFrame {
 
         tblMedicalEquip.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Patient_name", "Lab", "Test_name", "Hospital", "Healthcamp", "Doctor", "Bill"
+                "Patient_name", "Lab", "Test_name", "Hospital", "Healthcamp", "Doctor"
             }
         ));
         jScrollPane1.setViewportView(tblMedicalEquip);

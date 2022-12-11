@@ -259,23 +259,17 @@
                         <Component class="javax.swing.JTable" name="tblMedicalEquip">
                           <Properties>
                             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                              <Table columnCount="7" rowCount="4">
+                              <Table columnCount="6" rowCount="4">
                                 <Column editable="true" title="Patient_name" type="java.lang.Object"/>
                                 <Column editable="true" title="Lab" type="java.lang.Object"/>
                                 <Column editable="true" title="Test_name" type="java.lang.Object"/>
                                 <Column editable="true" title="Hospital" type="java.lang.Object"/>
                                 <Column editable="true" title="Healthcamp" type="java.lang.Object"/>
                                 <Column editable="true" title="Doctor" type="java.lang.Object"/>
-                                <Column editable="true" title="Bill" type="java.lang.Object"/>
                               </Table>
                             </Property>
                             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                               <TableColumnModel selectionModel="0">
-                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                                  <Title/>
-                                  <Editor/>
-                                  <Renderer/>
-                                </Column>
                                 <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                                   <Title/>
                                   <Editor/>

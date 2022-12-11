@@ -240,6 +240,7 @@ public class PharmacyCheckout extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        int count = 0;
         for(String s: Arrays.asList(medicines.split("<>"))){
             ArrayList<Medicines> medicines = medicinesController.getMedicines(s);
             String medicine_name = "";
@@ -253,11 +254,22 @@ public class PharmacyCheckout extends javax.swing.JPanel {
             if(quantity >= Integer.parseInt(s.split(" --- ")[1])){
                 medicinesController.updateMedicines(quantity, s);
                 jButton1.setEnabled(false);
-                medicinesController.updateStatus(patientName);
-                JOptionPane.showMessageDialog(this, "Processed the required medicines and sent to patient!");
             } else {
                 JOptionPane.showMessageDialog(this, "Required units for Drug " + s.split(" --- ")[0] + " not avaibale");
+                count = 1;
+                return;
             }
+        }
+        if(count == 0){
+            medicinesController.updateStatus(patientName);
+            JOptionPane.showMessageDialog(this, "Process requested and required medicines sent to Patient!");
+            jSpinner1.setValue(0);
+            jSpinner2.setValue(0);
+            jSpinner3.setValue(0);
+            jSpinner4.setValue(0);
+            jSpinner5.setValue(0);
+            jSpinner6.setValue(0);
+            jSpinner7.setValue(0);
         }
         
         

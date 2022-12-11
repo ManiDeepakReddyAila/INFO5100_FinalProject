@@ -16,6 +16,7 @@ import UI.PatientReport;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
@@ -35,6 +36,7 @@ public class HealthcampDoctor extends javax.swing.JFrame {
     private PatientReportController patientReportController;
     private PharmacyRequestsController pharmacyRequestsController;
     private HealthcampController healthcampController;
+    DefaultListModel<String> model2;
     DefaultTableModel model;
     static Logger log = Logger.getLogger(HealthcampDoctor.class.getName());
     
@@ -174,7 +176,7 @@ public class HealthcampDoctor extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(57, 57, 57)
                 .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 651, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 657, Short.MAX_VALUE)
                 .addComponent(btnLogout)
                 .addContainerGap())
         );
@@ -220,6 +222,7 @@ public class HealthcampDoctor extends javax.swing.JFrame {
             }
         });
 
+        jList1.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { " " };
             public int getSize() { return strings.length; }
@@ -227,7 +230,8 @@ public class HealthcampDoctor extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(jList1);
 
-        jLabel2.setText("List of Medication Added");
+        jLabel2.setFont(new java.awt.Font("Helvetica Neue", 3, 13)); // NOI18N
+        jLabel2.setText("LIST OF MEDICATION ADDED");
 
         btnApprove1.setBackground(new java.awt.Color(102, 153, 255));
         btnApprove1.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
@@ -286,9 +290,14 @@ public class HealthcampDoctor extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addGap(803, 803, 803)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnApprove1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnApprove3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnApprove3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnApprove1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(61, 61, 61)))))
                 .addGap(70, 70, 70))
         );
         jPanel3Layout.setVerticalGroup(
@@ -306,13 +315,13 @@ public class HealthcampDoctor extends javax.swing.JFrame {
                             .addComponent(btnApprove)
                             .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(65, 65, 65)
+                        .addGap(71, 71, 71)
                         .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnApprove1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnApprove2)
                     .addComponent(btnApprove3))
@@ -363,65 +372,17 @@ public class HealthcampDoctor extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnApproveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApproveActionPerformed
-        // TODO add your handling code here:
-//        DefaultTableModel model = (DefaultTableModel) tblTransport.getModel();
-//        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-//        String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
-//        int selectedRow = tblTransport.getSelectedRow();
-//        if(selectedRow == -1){
-//            JOptionPane.showMessageDialog(null,"Select a row before choosing to view/delete record", " Warning", JOptionPane.WARNING_MESSAGE);
-//            return;
-//        }
-//        String name = (String) tblTransport.getValueAt(selectedRow, 1);
-        
         DefaultListModel<String> defaultListModel = (DefaultListModel<String>)jList1.getModel();
         String medicine = (String) jComboBox1.getSelectedItem();
         String quantity = String.valueOf((Integer) jSpinner1.getValue());
-        System.out.println(medicine + " --- " + quantity);
         defaultListModel.addElement(medicine + " --- " + quantity);
-        
-        
-//        try {
-//            Class.forName("com.mysql.cj.jdbc.Driver");
-//            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fp?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "Deepak@1999");
-//            Statement myStatement = con.createStatement();
-//
-//            String query = "Update patient_report set medicines='" + medicine+ "' where patient_name='" + name + "'";
-//            myStatement.executeUpdate(query);
-//            JOptionPane.showMessageDialog(this, "Request Approved!!");
-//            log.info("Request Approved!!");
-//            model.setRowCount(0);
-//            String query1 = "Select * from healthcamp_requests";
-//            ResultSet rs = myStatement.executeQuery(query1);
-//            while (rs.next()) {
-//                String hospital_name = rs.getString("hospital_name");
-//                String patient_name = rs.getString("patient_name");
-//                String report_date = rs.getString("report_date");
-//                String status = rs.getString("status");
-//                String healthcamp_name = rs.getString("healthcamp_name");
-//
-//                Object row[] = new Object[5];
-//                row[0] = hospital_name;
-//                row[1] = patient_name;
-//                row[2] = report_date;
-//                row[3] = status;
-//                row[4] = healthcamp_name;
-//                model.addRow(row);
-//
-//            }
-//            con.close();
-//        } //System.out.println("Inserted data");
-//        catch (Exception E) {
-//            JOptionPane.showMessageDialog(this, E + "Error in DB connection");
-//            log.error("Error in DB connection");
-//        }
     }//GEN-LAST:event_btnApproveActionPerformed
 
     private void btnApprove1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApprove1ActionPerformed
         // TODO add your handling code here:
-        DefaultTableModel model = (DefaultTableModel) tblTransport.getModel();
-        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-        String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
+//        DefaultTableModel model = (DefaultTableModel) tblTransport.getModel();
+//        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+//        String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
         int selectedRow = tblTransport.getSelectedRow();
         if(selectedRow == -1){
             JOptionPane.showMessageDialog(null,"Select a row before choosing to view/delete record", " Warning", JOptionPane.WARNING_MESSAGE);
@@ -430,14 +391,18 @@ public class HealthcampDoctor extends javax.swing.JFrame {
         String name = (String) tblTransport.getValueAt(selectedRow, 1);
         
         String medicines = "";
-        DefaultListModel<String> defaultListModel = (DefaultListModel<String>)jList1.getModel();
-        for(String s: Collections.list(defaultListModel.elements())){
+        model2 = (DefaultListModel<String>)jList1.getModel();
+        for(String s: Collections.list(model2.elements())){
             medicines = medicines + s + "<>"; 
         }
         medicines = medicines.substring(0, medicines.length()-2);
+        if(medicines.startsWith("<>")){
+            medicines = medicines.substring(2);
+        }
         patientReportController.updateMedicines(medicines, name);
         JOptionPane.showMessageDialog(null,"Medication added to report", "Success!", JOptionPane.INFORMATION_MESSAGE);
-        defaultListModel.clear();
+        model2.clear();
+        jSpinner1.setValue(0);
     }//GEN-LAST:event_btnApprove1ActionPerformed
 
     private void btnApprove2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApprove2ActionPerformed
@@ -458,14 +423,25 @@ public class HealthcampDoctor extends javax.swing.JFrame {
     }//GEN-LAST:event_btnApprove2ActionPerformed
 
     private void tblTransportMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblTransportMouseClicked
-//        // TODO add your handling code here:
-//        DefaultTableModel model = (DefaultTableModel) tblTransport.getModel();
-//        int selectedRow = tblTransport.getSelectedRow();
-//        if(selectedRow == -1){
-//            JOptionPane.showMessageDialog(null,"Select a row before choosing to view/delete record", " Warning", JOptionPane.WARNING_MESSAGE);
-//            return;
-//        }
-//        String name = (String) tblTransport.getValueAt(selectedRow, 1);
+        // TODO add your handling code here:
+        model2 = (DefaultListModel<String>)jList1.getModel();
+        int selectedRow = tblTransport.getSelectedRow();
+        if(selectedRow == -1){
+            JOptionPane.showMessageDialog(null,"Select a row before choosing to view/delete record", " Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        String name = (String) tblTransport.getValueAt(selectedRow, 1);
+        ArrayList<String> meds = patientReportController.getMedicinesFromPatientReports(name);
+        for(String med: meds){
+            DefaultListModel<String> defaultListModel = (DefaultListModel<String>)jList1.getModel();
+            defaultListModel.clear();
+            if(med != null){
+                for(String s: Arrays.asList(med.split("<>"))){
+                defaultListModel.addElement(s);
+             }
+            }
+            
+        }
 //        try {
 //            Class.forName("com.mysql.cj.jdbc.Driver");
 //            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fp?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "Deepak@1999");

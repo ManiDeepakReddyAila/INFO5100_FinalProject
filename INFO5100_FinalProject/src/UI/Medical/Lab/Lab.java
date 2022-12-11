@@ -7,6 +7,7 @@ package UI.Medical.Lab;
 import Models.LabRequest;
 import Controller.HospitalController;
 import Controller.LabController;
+import Controller.NotificationController;
 import Controller.OrganizationController;
 import UI.Login;
 import UI.Login;
@@ -29,11 +30,12 @@ public class Lab extends javax.swing.JFrame {
     /**
      * Creates new form FoodMarketMain
      */
-    private String name;
+    private String username;
     private LabController labController;
     private HospitalController hospitalController;
     private OrganizationController orgController;
     private DefaultTableModel model;
+    private NotificationController notificationController;
     static Logger log = Logger.getLogger(Lab.class.getName());
     
     public Lab(){
@@ -42,7 +44,8 @@ public class Lab extends javax.swing.JFrame {
 
     public Lab(String name) {
         initComponents();
-        this.name = name;
+        this.username = name;
+        notificationController = new NotificationController();
         this.labController = new LabController();
         this.orgController = new OrganizationController();
         hospitalController = new HospitalController();
@@ -60,12 +63,13 @@ public class Lab extends javax.swing.JFrame {
     public void populateTable(String name){
         ArrayList<LabRequest> lrr = labController.getLabRequests(name);
         for(LabRequest lr: lrr){
-            Object row[] = new Object[5];
+            Object row[] = new Object[6];
                 row[0] = lr.getLabName();
                 row[1] = lr.getPatientName();
                 row[2] = lr.getTestName();
                 row[3] = lr.getStatus();
                 row[4] = lr.getDescription();
+                row[5] = lr.getDate();
                 model.addRow(row);
         }
     }
@@ -154,13 +158,13 @@ public class Lab extends javax.swing.JFrame {
 
         tblLab.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Lab Name", "Patient", "Test Name", "Status", "Description"
+                "Lab Name", "Patient", "Test Name", "Status", "Description", "Date"
             }
         ));
         jScrollPane1.setViewportView(tblLab);
@@ -309,33 +313,35 @@ public class Lab extends javax.swing.JFrame {
 
     private void btnApproveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApproveActionPerformed
         // TODO add your handling code here:
-        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-        String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
+//        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+//        String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
         int selectedRow = tblLab.getSelectedRow();
         if(selectedRow == -1){
             JOptionPane.showMessageDialog(null,"Select a row before choosing to view/delete record", " Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
         String name = (String) tblLab.getValueAt(selectedRow, 1);
-        labController.updateStatus("APPROVED", name);
+        String date = (String) tblLab.getValueAt(selectedRow, 5);
+        labController.updateStatus("APPROVED", date);
         JOptionPane.showMessageDialog(this, "Request Approved!!");
         model.setRowCount(0);
-        populateTable(name);
+        populateTable(username);
     }//GEN-LAST:event_btnApproveActionPerformed
 
     private void btnRejectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRejectActionPerformed
-        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-        String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
         int selectedRow = tblLab.getSelectedRow();
         if(selectedRow == -1){
             JOptionPane.showMessageDialog(null,"Select a row before choosing to view/delete record", " Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
         String name = (String) tblLab.getValueAt(selectedRow, 1);
-        labController.updateStatus("REJECTED", name);
+        String date = (String) tblLab.getValueAt(selectedRow, 5);
+        labController.updateStatus("REJECTED", date);
         JOptionPane.showMessageDialog(this, "Request Rejected!!");
         model.setRowCount(0);
-        populateTable(name);
+        String m = JOptionPane.showInputDialog("Rejection Comment?");
+        notificationController.insertNotification("lab", "volunteer", "0", name + ": "+m, date);
+        populateTable(username);
     }//GEN-LAST:event_btnRejectActionPerformed
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
@@ -378,6 +384,8 @@ public class Lab extends javax.swing.JFrame {
         if(status.equals("APPROVED")){
            PatientReport n = new PatientReport(name);
            n.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(null,"Approved requests only!", " Warning", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnApprove1ActionPerformed
 
@@ -397,8 +405,16 @@ public class Lab extends javax.swing.JFrame {
         String description = jTextField1.getText();
         String labName = (String) tblLab.getValueAt(selectedRow, 0);
         String testName = (String) tblLab.getValueAt(selectedRow, 2);
-        hospitalController.insertHospitalRequest(hospitalName, patientName, date, labName, testName, status, description);
-        JOptionPane.showMessageDialog(this, "Hospital Request Created Successfully!!..");
+        String statusNew = (String) tblLab.getValueAt(selectedRow, 3);
+        if(statusNew.equals("APPROVED")){
+            System.out.println("helloooo");
+            hospitalController.insertHospitalRequest(hospitalName, patientName, date, labName, testName, status, description);
+            JOptionPane.showMessageDialog(this, "Hospital Request Created Successfully!!..");
+        } else {
+            JOptionPane.showMessageDialog(null,"Approved requests only!", " Warning", JOptionPane.WARNING_MESSAGE);
+        }
+        jTextField1.setText("");
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

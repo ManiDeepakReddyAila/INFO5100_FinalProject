@@ -289,7 +289,8 @@ public class Healthcamp extends javax.swing.JFrame {
             return;
         }
         String name = (String) tblTransport.getValueAt(selectedRow, 1);
-        healthcampController.updateStatus("APPROVED", name);
+        String date1 = (String) tblTransport.getValueAt(selectedRow, 2);
+        healthcampController.updateStatus("APPROVED", date1);
         JOptionPane.showMessageDialog(null,"Request has been Approved", "Success!", JOptionPane.INFORMATION_MESSAGE);
         populateTable();
 //        notificationController.insertNotification("healthcamp", "volunteer", "0", "Request has been Approved!", date);
@@ -304,12 +305,12 @@ public class Healthcamp extends javax.swing.JFrame {
             return;
         }
         String name = (String) tblTransport.getValueAt(selectedRow, 1);
-        healthcampController.updateStatus("REJECTED", name);
+        String date1 = (String) tblTransport.getValueAt(selectedRow, 2);
+        healthcampController.updateStatus("REJECTED", date1);
         JOptionPane.showMessageDialog(null,"Request has been Rejected", "Sorry!", JOptionPane.INFORMATION_MESSAGE);
-        populateTable();
         String m = JOptionPane.showInputDialog("Rejection Comment?");
-        System.out.println(m);
-        notificationController.insertNotification("healthcamp", "volunteer", "0", m, date);
+        notificationController.insertNotification("healthcamp", "volunteer", "0", name + ": " + m, date);
+        populateTable();
     }//GEN-LAST:event_btnRejectActionPerformed
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
@@ -327,9 +328,9 @@ public class Healthcamp extends javax.swing.JFrame {
 
         for (int row = 0; row < model.getRowCount(); row++) {
 
-            if (model.getValueAt(row, 5) == "APPROVED") {
+            if (model.getValueAt(row, 3) == "APPROVED") {
                 accepted++;
-            } else if (model.getValueAt(row, 5) == "REJECTED") {
+            } else if (model.getValueAt(row, 3) == "REJECTED") {
                 rejected++;
             } else {
                 pending++;
@@ -360,8 +361,9 @@ public class Healthcamp extends javax.swing.JFrame {
         String name = (String) tblTransport.getValueAt(selectedRow, 1);
         String doctorAssigned = (String) jComboBox1.getSelectedItem();
         String status = (String) tblTransport.getValueAt(selectedRow, 3);
+        String date1 = (String) tblTransport.getValueAt(selectedRow, 2);
         if(status.equals("APPROVED")){
-            healthcampController.updateDoctorAssigned(doctorAssigned, name);
+            healthcampController.updateDoctorAssigned(doctorAssigned, date1);
             populateTable();
             JOptionPane.showMessageDialog(this, doctorAssigned + " has been assigned!");
         } else {

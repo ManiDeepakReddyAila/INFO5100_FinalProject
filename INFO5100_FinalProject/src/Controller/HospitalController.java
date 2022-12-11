@@ -33,10 +33,10 @@ public class HospitalController {
         return hospitalRequests;
     }
     
-    public void updateStatus(String newStatus, String patientName){
+    public void updateStatus(String newStatus, String date){
         try {
             Statement myStatement = ConnectioinManager.getConnection().createStatement();
-            String query = "Update hospital_requests set status='" + newStatus + "' where patient_name='" + patientName + "'";
+            String query = "Update hospital_requests set status='" + newStatus + "' where report_date='" + date + "'";
             myStatement.executeUpdate(query);
 
         } catch (Exception E) {

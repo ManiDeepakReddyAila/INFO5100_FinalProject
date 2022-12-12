@@ -21,7 +21,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author aesha
+ * @author manideepakreddyaila
  */
 public class EnterpriseScreen extends javax.swing.JPanel {
 

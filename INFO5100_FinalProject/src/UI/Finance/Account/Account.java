@@ -18,7 +18,7 @@ import org.apache.log4j.Logger;
 
 /**
  *
- * @author saisr
+ * @author pranitha
  */
 public class Account extends javax.swing.JFrame {
 

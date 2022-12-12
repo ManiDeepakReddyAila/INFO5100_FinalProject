@@ -16,7 +16,7 @@ import javax.mail.internet.MimeMessage;
 
 /**
  *
- * @author anvithalakshmisha
+ * @author manideepakreddyaila
  */
 public class SendMail {
 

@@ -13,7 +13,7 @@ import java.util.logging.Level;
 
 /**
  *
- * @author manideepakreddyaila
+ * @author pranitha
  */
 public class HealthcampController {
     

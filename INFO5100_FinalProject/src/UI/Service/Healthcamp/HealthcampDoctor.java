@@ -5,16 +5,11 @@
 package UI.Service.Healthcamp;
 
 import Models.HealthcampRequests;
-import Models.PatientReports;
 import Controller.HealthcampController;
 import Controller.PatientReportController;
 import Controller.PharmacyRequestsController;
 import UI.Login;
-import UI.Login;
 import UI.PatientReport;
-import UI.PatientReport;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -29,9 +24,6 @@ import org.apache.log4j.Logger;
  */
 public class HealthcampDoctor extends javax.swing.JFrame {
 
-    /**
-     * Creates new form TransportMain
-     */
     private String username;
     private PatientReportController patientReportController;
     private PharmacyRequestsController pharmacyRequestsController;
@@ -45,7 +37,7 @@ public class HealthcampDoctor extends javax.swing.JFrame {
     }
     
     public void populateTable(String doctorAssigned){
-        model = (DefaultTableModel) tblTransport.getModel();
+        model = (DefaultTableModel) tblDoc.getModel();
         model.setRowCount(0);
         ArrayList<HealthcampRequests> hrr = healthcampController.getHealthcampRequests(doctorAssigned);
         for(HealthcampRequests hr: hrr){
@@ -68,44 +60,6 @@ public class HealthcampDoctor extends javax.swing.JFrame {
         this.username = DBUsername;
         jList1.setModel(new DefaultListModel<>());
         populateTable(DBUsername);
-//        try {
-//            Class.forName("com.mysql.cj.jdbc.Driver");
-//            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fp?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "Deepak@1999");
-//            Statement myStatement = con.createStatement();
-//            String query = "select * from healthcamp_requests where doctor_assigned = '" + DBUsername + "'";
-//            ResultSet rs = myStatement.executeQuery(query);
-//            System.out.println(rs.getFetchSize());
-//            //System.out.println("Inserted data");
-//
-//            while (rs.next()) {
-//                String hospital_name = rs.getString("hospital_name");
-//                String patient_name = rs.getString("patient_name");
-//                String report_date = rs.getString("report_date");
-//                String status = rs.getString("status");
-//                String healthcamp_name = rs.getString("healthcamp_name");
-//                String doctor_assigned = rs.getString("doctor_assigned");
-//
-//                Object row[] = new Object[6];
-//                row[0] = hospital_name;
-//                row[1] = patient_name;
-//                row[2] = report_date;
-//                row[3] = status;
-//                row[4] = healthcamp_name;
-//                row[5] = doctor_assigned;
-//                model.addRow(row);
-//
-//            }
-            
-//            String query1 = "select name from organization where enterprise = 'Service' and type = 'Healthcamp' and name like 'Doc%'";
-//            ResultSet rs1 = myStatement.executeQuery(query1);
-//            jComboBox1.removeAllItems();
-//            while (rs1.next()) {
-//                jComboBox1.addItem(rs1.getString("name"));
-//            }
-//            con.close();
-//        } catch (Exception E) {
-//            JOptionPane.showMessageDialog(this, E + "....Error in DB call");
-//        }
         
     }
 
@@ -126,7 +80,7 @@ public class HealthcampDoctor extends javax.swing.JFrame {
         RightPanel = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblTransport = new javax.swing.JTable();
+        tblDoc = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
         btnApprove = new javax.swing.JButton();
@@ -189,7 +143,7 @@ public class HealthcampDoctor extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(222, 242, 218));
 
-        tblTransport.setModel(new javax.swing.table.DefaultTableModel(
+        tblDoc.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -200,12 +154,12 @@ public class HealthcampDoctor extends javax.swing.JFrame {
                 "Hospital Name", "Patient Name", "Report Date", "Status", "Healthcamp Name", "Doctor Assigned"
             }
         ));
-        tblTransport.addMouseListener(new java.awt.event.MouseAdapter() {
+        tblDoc.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblTransportMouseClicked(evt);
+                tblDocMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(tblTransport);
+        jScrollPane1.setViewportView(tblDoc);
 
         jLabel1.setFont(new java.awt.Font("Calibri", 0, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 102, 0));
@@ -383,16 +337,12 @@ public class HealthcampDoctor extends javax.swing.JFrame {
     }//GEN-LAST:event_btnApproveActionPerformed
 
     private void btnApprove1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApprove1ActionPerformed
-        // TODO add your handling code here:
-//        DefaultTableModel model = (DefaultTableModel) tblTransport.getModel();
-//        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-//        String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
-        int selectedRow = tblTransport.getSelectedRow();
+        int selectedRow = tblDoc.getSelectedRow();
         if(selectedRow == -1){
-            JOptionPane.showMessageDialog(null,"Select a row before choosing to view/delete record", " Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Please select a row", " Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        String name = (String) tblTransport.getValueAt(selectedRow, 1);
+        String name = (String) tblDoc.getValueAt(selectedRow, 1);
         
         String medicines = "";
         model2 = (DefaultListModel<String>)jList1.getModel();
@@ -410,14 +360,12 @@ public class HealthcampDoctor extends javax.swing.JFrame {
     }//GEN-LAST:event_btnApprove1ActionPerformed
 
     private void btnApprove2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApprove2ActionPerformed
-        // TODO add your handling code here:
-        DefaultTableModel model = (DefaultTableModel) tblTransport.getModel();
-        int selectedRow = tblTransport.getSelectedRow();
+        int selectedRow = tblDoc.getSelectedRow();
         if(selectedRow == -1){
-            JOptionPane.showMessageDialog(null,"Select a row before choosing to view/delete record", " Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Please select a row", " Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        String name = (String) tblTransport.getValueAt(selectedRow, 1);
+        String name = (String) tblDoc.getValueAt(selectedRow, 1);
         ArrayList<String> prr = patientReportController.getMedicinesFromPatientReports(name);
         PatientReport newjFrame = new PatientReport(name);
         for(String pr: prr){
@@ -426,15 +374,15 @@ public class HealthcampDoctor extends javax.swing.JFrame {
         newjFrame.setVisible(true);
     }//GEN-LAST:event_btnApprove2ActionPerformed
 
-    private void tblTransportMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblTransportMouseClicked
+    private void tblDocMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDocMouseClicked
         // TODO add your handling code here:
         model2 = (DefaultListModel<String>)jList1.getModel();
-        int selectedRow = tblTransport.getSelectedRow();
+        int selectedRow = tblDoc.getSelectedRow();
         if(selectedRow == -1){
-            JOptionPane.showMessageDialog(null,"Select a row before choosing to view/delete record", " Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Please select a row", " Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        String name = (String) tblTransport.getValueAt(selectedRow, 1);
+        String name = (String) tblDoc.getValueAt(selectedRow, 1);
         ArrayList<String> meds = patientReportController.getMedicinesFromPatientReports(name);
         for(String med: meds){
             DefaultListModel<String> defaultListModel = (DefaultListModel<String>)jList1.getModel();
@@ -446,40 +394,19 @@ public class HealthcampDoctor extends javax.swing.JFrame {
             }
             
         }
-//        try {
-//            Class.forName("com.mysql.cj.jdbc.Driver");
-//            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fp?zeroDateTimeBehavior=CONVERT_TO_NULL", "root", "Deepak@1999");
-//            Statement myStatement = con.createStatement();
-//
-//            String query = "select medicines from patient_report where name='" + name + "'";
-//            ResultSet rs = myStatement.executeQuery(query);
-//            String medicines = "";
-//            while (rs.next()) {
-//                medicines = rs.getString("medicines");
-//            }
-//            DefaultListModel<String> defaultListModel = (DefaultListModel<String>)jList1.getModel();
-//            defaultListModel.clear();
-//            for(String s: Arrays.asList(medicines.split("<>"))){
-//               defaultListModel.addElement(s);
-//            }
-//        } catch (Exception E) {
-//            JOptionPane.showMessageDialog(this, E + "Error in DB connection");
-//            log.error("Error in DB connection");
-//        }
-    }//GEN-LAST:event_tblTransportMouseClicked
+    }//GEN-LAST:event_tblDocMouseClicked
 
     private void btnApprove3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApprove3ActionPerformed
-        // TODO add your handling code here:
-        DefaultTableModel model = (DefaultTableModel) tblTransport.getModel();
-        int selectedRow = tblTransport.getSelectedRow();
+        
+        int selectedRow = tblDoc.getSelectedRow();
         if(selectedRow == -1){
-            JOptionPane.showMessageDialog(null,"Select a row before choosing to view/delete record", " Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Please select a row", " Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        String patientName = (String) tblTransport.getValueAt(selectedRow, 1);
+        String patientName = (String) tblDoc.getValueAt(selectedRow, 1);
         String medicines = "";
-        String doctorName = (String) tblTransport.getValueAt(selectedRow, 5);
-        String healthcampName = (String) tblTransport.getValueAt(selectedRow, 4);
+        String doctorName = (String) tblDoc.getValueAt(selectedRow, 5);
+        String healthcampName = (String) tblDoc.getValueAt(selectedRow, 4);
         ArrayList<String> prr = patientReportController.getMedicinesFromPatientReports(patientName);
         for(String pr: prr){
             medicines = pr;
@@ -535,6 +462,6 @@ public class HealthcampDoctor extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.JSplitPane jSplitPane1;
-    private javax.swing.JTable tblTransport;
+    private javax.swing.JTable tblDoc;
     // End of variables declaration//GEN-END:variables
 }

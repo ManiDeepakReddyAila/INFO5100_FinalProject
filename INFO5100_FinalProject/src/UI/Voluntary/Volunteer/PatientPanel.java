@@ -20,9 +20,6 @@ import javax.swing.table.DefaultTableModel;
  */
 public class PatientPanel extends javax.swing.JPanel {
 
-    /**
-     * Creates new form PatientRegistration
-     */
     private PatientsController patientsController;
     private LabController labController;
     private OrganizationController organizationController;
@@ -213,7 +210,6 @@ public class PatientPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         String date = dateFormat.format(java.util.Calendar.getInstance().getTime());
-        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         String testName = "";
         if(jRadioButton1.isSelected()){
             testName = "Basic Full Body checkup";

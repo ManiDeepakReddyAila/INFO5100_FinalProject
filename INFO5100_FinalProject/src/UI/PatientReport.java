@@ -16,9 +16,6 @@ public class PatientReport extends javax.swing.JFrame {
 
     private String name;
     private PatientReportController patientReportController;
-    /**
-     * Creates new form NewJFrame
-     */
     public PatientReport() {
         initComponents();
         patientReportController = new PatientReportController();
@@ -324,16 +321,6 @@ public class PatientReport extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(PatientReport.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new PatientReport().setVisible(true);

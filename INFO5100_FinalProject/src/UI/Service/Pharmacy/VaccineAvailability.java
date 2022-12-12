@@ -19,9 +19,6 @@ import org.apache.log4j.Logger;
  */
 public class VaccineAvailability extends javax.swing.JPanel {
 
-    /**
-     * Creates new form VaccineManufRequests
-     */
     private MedicinesController medicineController;
     private DefaultTableModel model;
     static Logger log = Logger.getLogger(VaccineAvailability.class.getName());
@@ -34,7 +31,6 @@ public class VaccineAvailability extends javax.swing.JPanel {
         
         initComponents();
         medicineController = new MedicinesController();
-//        jList1.setModel(new DefaultListModel<>());
         populateTable();
     }
     

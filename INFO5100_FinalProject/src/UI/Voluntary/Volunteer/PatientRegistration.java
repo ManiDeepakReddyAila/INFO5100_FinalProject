@@ -13,9 +13,6 @@ import javax.swing.JOptionPane;
  */
 public class PatientRegistration extends javax.swing.JPanel {
 
-    /**
-     * Creates new form PatientRegistration
-     */
     private PatientsController patientController;
     public PatientRegistration() {
         initComponents();

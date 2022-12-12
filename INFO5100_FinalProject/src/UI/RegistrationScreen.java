@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package UI;
 
 import Controller.UsersController;
@@ -304,8 +300,6 @@ public class RegistrationScreen extends javax.swing.JPanel {
         mail.sendMail("Registration", "Registration Completed.!!", EmailId);
         log.info("Registration Completed.!!");
 
-        //sendMail("Registration","Registered Successfully",EmailId);
-        
         usersController.insertUser(Name, UserName, Password, Country, EmailId, Enterprise, Organization, Contact);
         JOptionPane.showMessageDialog(this, "User Created Successfully!!..");
         log.info("User Created Successfully!!..");
@@ -319,13 +313,10 @@ public class RegistrationScreen extends javax.swing.JPanel {
     }//GEN-LAST:event_btnRegisterActionPerformed
 
     private void cmbOrganisationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbOrganisationActionPerformed
-        // TODO add your handling code here:
-
 
     }//GEN-LAST:event_cmbOrganisationActionPerformed
 
     private void cmbEnterpriseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbEnterpriseActionPerformed
-        // TODO add your handling code here:
         String Enterprise = cmbEnterprise.getItemAt(cmbEnterprise.getSelectedIndex());
         cmbOrganisation.removeAllItems();
         if (Enterprise.equalsIgnoreCase("Medical")) {
@@ -374,7 +365,6 @@ public class RegistrationScreen extends javax.swing.JPanel {
     }//GEN-LAST:event_pwd2FocusLost
 
     private void txtcontactFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtcontactFocusLost
-        // TODO add your handling code here:
         String ContactNo = txtcontact.getText();
         if (ContactNo.length() != 10) {
             JOptionPane.showMessageDialog(this, "Please enter Valid Phone number!");

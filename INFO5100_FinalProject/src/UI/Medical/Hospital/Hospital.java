@@ -53,6 +53,7 @@ public class Hospital extends javax.swing.JFrame {
         hospitalController = new HospitalController();
         organizationController = new OrganizationController();
         populateTable(username);
+        populateTable1();
         ArrayList<String> drr = organizationController.getDoctorNames();
         jComboBox1.removeAllItems();
         for(String dr: drr){
@@ -529,7 +530,7 @@ public class Hospital extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null,"Hospital Request has been rejected", "Sorry!", JOptionPane.INFORMATION_MESSAGE);
         populateTable(username);
         String m = JOptionPane.showInputDialog("Rejection Comment?");
-        notificationController.insertNotification("hospital", "volunteer", "0", name + ": " + m, date);
+        notificationController.insertNotification("hospital", "lab", "0", name + ": " + m, date);
     }//GEN-LAST:event_btnRejectActionPerformed
 
     private void btnApproveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApproveActionPerformed

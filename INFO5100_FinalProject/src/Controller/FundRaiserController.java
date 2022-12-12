@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author manideepakreddyaila
+ * @author saideepak
  */
 public class FundRaiserController {
 

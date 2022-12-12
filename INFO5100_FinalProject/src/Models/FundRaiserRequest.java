@@ -6,7 +6,7 @@ package Models;
 
 /**
  *
- * @author manideepakreddyaila
+ * @author pranitha
  */
 public class FundRaiserRequest {
     

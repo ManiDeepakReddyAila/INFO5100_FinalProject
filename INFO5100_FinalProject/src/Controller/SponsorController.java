@@ -13,7 +13,7 @@ import java.util.logging.Level;
 
 /**
  *
- * @author manideepakreddyaila
+ * @author saideepak
  */
 public class SponsorController {
     public void insertSponsor(String loggedInUser, String healthcampName, int amountDonated, String date){

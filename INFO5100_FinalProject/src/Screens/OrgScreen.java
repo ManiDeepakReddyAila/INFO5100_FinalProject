@@ -13,7 +13,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author aesha
+ * @author manideepakreddyaila
  */
 public class OrgScreen extends javax.swing.JPanel {
 
@@ -32,11 +32,10 @@ public class OrgScreen extends javax.swing.JPanel {
         enterpriseController = new EnterpriseController();
         organizationController = new OrganizationController();
         ArrayList<Network> networks = networkController.getNetworks();
-        cmbCountry.removeAllItems();
+        cmbNetwork.removeAllItems();
         for(Network n: networks){
-            cmbCountry.addItem(n.getNetworkName());
+            cmbNetwork.addItem(n.getNetworkName());
         }
-        String network = cmbCountry.getItemAt(cmbCountry.getSelectedIndex());
     }
 
     /**
@@ -58,11 +57,12 @@ public class OrgScreen extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        cmbCountry = new javax.swing.JComboBox<>();
+        cmbNetwork = new javax.swing.JComboBox<>();
         cmbEnterprise = new javax.swing.JComboBox<>();
         btnSearch = new javax.swing.JButton();
         btnCreate = new javax.swing.JButton();
         txtOrgType = new javax.swing.JTextField();
+        btnCreate1 = new javax.swing.JButton();
 
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -71,7 +71,7 @@ public class OrgScreen extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(jList1);
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(255, 249, 173));
 
         tblManageOrg.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
         tblManageOrg.setModel(new javax.swing.table.DefaultTableModel(
@@ -87,38 +87,37 @@ public class OrgScreen extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tblManageOrg);
 
-        jLabel1.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jLabel1.setText("Organisation type:");
+        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
+        jLabel1.setText("ORGANIZATION TYPE:");
 
-        jLabel2.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jLabel2.setText("Organisation Name:");
+        jLabel2.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
+        jLabel2.setText("ORGANIZATION NAME:");
 
         txtOrgName.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
 
         jLabel5.setFont(new java.awt.Font("Calibri", 0, 36)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(102, 153, 255));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("MANAGE ORGANIZATION");
 
-        jLabel6.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
-        jLabel6.setText("Network:");
+        jLabel6.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
+        jLabel6.setText("NETWORK:");
 
-        jLabel7.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
-        jLabel7.setText("Enterprise:");
+        jLabel7.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
+        jLabel7.setText("ENTERPRISE:");
 
-        cmbCountry.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
-        cmbCountry.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cmbCountry.addActionListener(new java.awt.event.ActionListener() {
+        cmbNetwork.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
+        cmbNetwork.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbNetwork.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbCountryActionPerformed(evt);
+                cmbNetworkActionPerformed(evt);
             }
         });
 
         cmbEnterprise.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
         cmbEnterprise.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        btnSearch.setBackground(new java.awt.Color(102, 153, 255));
+        btnSearch.setBackground(new java.awt.Color(248, 237, 98));
         btnSearch.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        btnSearch.setForeground(new java.awt.Color(255, 255, 255));
         btnSearch.setText("SEARCH");
         btnSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -126,9 +125,8 @@ public class OrgScreen extends javax.swing.JPanel {
             }
         });
 
-        btnCreate.setBackground(new java.awt.Color(102, 153, 255));
+        btnCreate.setBackground(new java.awt.Color(248, 237, 98));
         btnCreate.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        btnCreate.setForeground(new java.awt.Color(255, 255, 255));
         btnCreate.setText("CREATE");
         btnCreate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -138,63 +136,78 @@ public class OrgScreen extends javax.swing.JPanel {
 
         txtOrgType.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
 
+        btnCreate1.setBackground(new java.awt.Color(248, 237, 98));
+        btnCreate1.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        btnCreate1.setText("DELETE");
+        btnCreate1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCreate1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(114, 114, 114)
+            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(424, 424, 424)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2))
+                .addGap(69, 69, 69)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtOrgType, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
+                    .addComponent(txtOrgName))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(270, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 673, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
+                        .addGap(224, 224, 224))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6)
                             .addComponent(jLabel7))
                         .addGap(23, 23, 23)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cmbCountry, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cmbNetwork, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cmbEnterprise, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
+                        .addGap(222, 222, 222)
                         .addComponent(btnSearch)
-                        .addGap(425, 425, 425))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(311, 311, 311)
-                .addComponent(jLabel5)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
-                .addGap(41, 41, 41)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnCreate, javax.swing.GroupLayout.PREFERRED_SIZE, 83, Short.MAX_VALUE)
-                    .addComponent(txtOrgName, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)
-                    .addComponent(txtOrgType, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(471, 471, 471))
+                        .addGap(319, 319, 319))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btnCreate, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(490, 490, 490))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btnCreate1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(239, 239, 239))))
         );
 
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {cmbCountry, cmbEnterprise});
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {cmbEnterprise, cmbNetwork});
 
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(61, 61, 61)
                 .addComponent(jLabel5)
-                .addGap(57, 57, 57)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(cmbCountry, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(cmbEnterprise, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSearch))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(63, 63, 63)
+                .addGap(81, 81, 81)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnSearch)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6)
+                            .addComponent(cmbNetwork, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(26, 26, 26)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7)
+                            .addComponent(cmbEnterprise, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnCreate1)
+                .addGap(53, 53, 53)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtOrgType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -202,19 +215,17 @@ public class OrgScreen extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtOrgName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(39, 39, 39)
+                .addGap(47, 47, 47)
                 .addComponent(btnCreate)
-                .addGap(193, 193, 193))
+                .addContainerGap(122, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
-        // TODO add your handling code here:
-
         String type = txtOrgType.getText();
         String name = txtOrgName.getText();
         String enterprise = cmbEnterprise.getItemAt(cmbEnterprise.getSelectedIndex());
-        String network = cmbCountry.getItemAt(cmbCountry.getSelectedIndex());
+        String network = cmbNetwork.getItemAt(cmbNetwork.getSelectedIndex());
         
         organizationController.insertOrg(name, type, enterprise, network);
         JOptionPane.showMessageDialog(this, "Organization successfully created!");
@@ -222,9 +233,10 @@ public class OrgScreen extends javax.swing.JPanel {
         txtOrgName.setText("");
     }//GEN-LAST:event_btnCreateActionPerformed
 
+    
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         // TODO add your handling code here:
-        String network = (String) cmbCountry.getSelectedItem();
+        String network = (String) cmbNetwork.getSelectedItem();
         String enterprise = (String) cmbEnterprise.getSelectedItem();
 
         DefaultTableModel md = (DefaultTableModel) tblManageOrg.getModel();
@@ -241,22 +253,48 @@ public class OrgScreen extends javax.swing.JPanel {
 
     }//GEN-LAST:event_btnSearchActionPerformed
 
-    private void cmbCountryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCountryActionPerformed
+    private void cmbNetworkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbNetworkActionPerformed
         // TODO add your handling code here:
-        String network = cmbCountry.getItemAt(cmbCountry.getSelectedIndex());
+        String network = cmbNetwork.getItemAt(cmbNetwork.getSelectedIndex());
         ArrayList<Enterprise> enterprises = enterpriseController.getEnterprise(network);
         cmbEnterprise.removeAllItems();
         for(Enterprise e: enterprises){
             cmbEnterprise.addItem(e.getEnterpriseName());
         }
-    }//GEN-LAST:event_cmbCountryActionPerformed
+    }//GEN-LAST:event_cmbNetworkActionPerformed
+
+    private void btnCreate1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreate1ActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = tblManageOrg.getSelectedRow();
+        if(selectedRow == -1){
+            JOptionPane.showMessageDialog(null,"Please select a row", " Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        String orgName = (String) tblManageOrg.getValueAt(selectedRow, 3);
+        String network = (String) tblManageOrg.getValueAt(selectedRow, 0);
+        String enterprise = (String) tblManageOrg.getValueAt(selectedRow, 1);
+        organizationController.deleteOrganization(orgName);
+        JOptionPane.showMessageDialog(null,"Deleted successfully!", " Info", JOptionPane.INFORMATION_MESSAGE);
+        DefaultTableModel md = (DefaultTableModel) tblManageOrg.getModel();
+        md.setRowCount(0);
+        ArrayList<Organization> orgNames = organizationController.getOrganizations(enterprise, network);
+        for(Organization o: orgNames){
+            Object row[] = new Object[4];
+            row[0] = o.getNetwork();
+            row[1] = o.getEnterprise();
+            row[2] = o.getType();
+            row[3] = o.getName();
+            md.addRow(row);
+        }
+    }//GEN-LAST:event_btnCreate1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCreate;
+    private javax.swing.JButton btnCreate1;
     private javax.swing.JButton btnSearch;
-    private javax.swing.JComboBox<String> cmbCountry;
     private javax.swing.JComboBox<String> cmbEnterprise;
+    private javax.swing.JComboBox<String> cmbNetwork;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;

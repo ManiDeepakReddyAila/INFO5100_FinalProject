@@ -5,34 +5,27 @@
 package Screens;
 
 import Controller.AdminController;
+import Controller.OrganizationController;
 import Models.AdminRequests;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import javax.swing.JPanel;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author aesha
+ * @author saideepak
  */
 public class TasksRequest extends javax.swing.JPanel {
-
-    /**
-     * Creates new form TasksRequest
-     */
     private AdminController adminController;
     private JPanel RightPanel;
     private DefaultTableModel md;
+    private OrganizationController organizationController;
 
     public TasksRequest(JPanel RightPanel) {
         initComponents();
         adminController = new AdminController();
+        organizationController = new OrganizationController();
         this.RightPanel = RightPanel;
         populateTable();
     }
@@ -68,10 +61,9 @@ public class TasksRequest extends javax.swing.JPanel {
         btnApprove = new javax.swing.JButton();
         btnReject = new javax.swing.JButton();
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(255, 249, 173));
 
         jLabel1.setFont(new java.awt.Font("Calibri", 0, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(102, 153, 255));
         jLabel1.setText("MANAGE REQUEST");
 
         tblManageRequest.setModel(new javax.swing.table.DefaultTableModel(
@@ -89,9 +81,8 @@ public class TasksRequest extends javax.swing.JPanel {
         tblManageRequest.setShowGrid(false);
         jScrollPane1.setViewportView(tblManageRequest);
 
-        btnApprove.setBackground(new java.awt.Color(102, 153, 255));
+        btnApprove.setBackground(new java.awt.Color(248, 237, 98));
         btnApprove.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        btnApprove.setForeground(new java.awt.Color(255, 255, 255));
         btnApprove.setText("APPROVE");
         btnApprove.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -99,9 +90,8 @@ public class TasksRequest extends javax.swing.JPanel {
             }
         });
 
-        btnReject.setBackground(new java.awt.Color(102, 153, 255));
+        btnReject.setBackground(new java.awt.Color(248, 237, 98));
         btnReject.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        btnReject.setForeground(new java.awt.Color(255, 255, 255));
         btnReject.setText("REJECT");
         btnReject.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -158,19 +148,21 @@ public class TasksRequest extends javax.swing.JPanel {
     private void btnApproveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApproveActionPerformed
         int selectedRow = tblManageRequest.getSelectedRow();
         if(selectedRow == -1){
-            JOptionPane.showMessageDialog(null,"Select a row before choosing to view/delete record", " Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Please select a row!", " Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
         String healthcampName = (String) tblManageRequest.getValueAt(selectedRow, 0);
         adminController.updateStatus("APPROVED", healthcampName);
-        JOptionPane.showMessageDialog(null,"Request Approved!", " Info", JOptionPane.INFORMATION_MESSAGE);
+        
         populateTable();
+        organizationController.insertOrg(healthcampName, "Healthcamp", "Service", "US");
+        JOptionPane.showMessageDialog(null,"Request Approved, Healthcamp added!", " Info", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_btnApproveActionPerformed
 
     private void btnRejectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRejectActionPerformed
         int selectedRow = tblManageRequest.getSelectedRow();
         if(selectedRow == -1){
-            JOptionPane.showMessageDialog(null,"Select a row before choosing to view/delete record", " Info", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Please select a row!", " Info", JOptionPane.WARNING_MESSAGE);
             return;
         }
         String healthcampName = (String) tblManageRequest.getValueAt(selectedRow, 0);

@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package UI.Service.Healthcamp;
 
 import Models.HealthcampRequests;
@@ -18,13 +14,10 @@ import org.apache.log4j.Logger;
 
 /**
  *
- * @author aesha
+ * @author saideepak
  */
 public class Healthcamp extends javax.swing.JFrame {
 
-    /**
-     * Creates new form TransportMain
-     */
     private OrganizationController organizationController;
     private HealthcampController healthcampController;
     private NotificationController notificationController;
@@ -46,7 +39,7 @@ public class Healthcamp extends javax.swing.JFrame {
     }
     
     public void populateTable(){
-        model = (DefaultTableModel) tblTransport.getModel();
+        model = (DefaultTableModel) tblHC.getModel();
         model.setRowCount(0);
         ArrayList<HealthcampRequests> hcrr = healthcampController.getHealthcampRequests();
         for(HealthcampRequests hr: hcrr){
@@ -74,20 +67,20 @@ public class Healthcamp extends javax.swing.JFrame {
         RightPanel = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblTransport = new javax.swing.JTable();
+        tblHC = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         btnApprove = new javax.swing.JButton();
         btnReject = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
         btnApprove1 = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox<>();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel2.setBackground(new java.awt.Color(51, 153, 255));
+        jPanel2.setBackground(new java.awt.Color(0, 102, 0));
 
-        jButton1.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(51, 153, 255));
+        jButton1.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(0, 102, 0));
         jButton1.setText("VIEW REQUEST");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -95,7 +88,9 @@ public class Healthcamp extends javax.swing.JFrame {
             }
         });
 
-        btnLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logoutimage.png"))); // NOI18N
+        btnLogout.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
+        btnLogout.setForeground(new java.awt.Color(0, 102, 0));
+        btnLogout.setText("LOGOUT");
         btnLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLogoutActionPerformed(evt);
@@ -108,30 +103,30 @@ public class Healthcamp extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 171, Short.MAX_VALUE)))
+                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(46, 46, 46)
+                .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(57, 57, 57)
                 .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 651, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 607, Short.MAX_VALUE)
                 .addComponent(btnLogout)
-                .addContainerGap())
+                .addGap(89, 89, 89))
         );
 
         jSplitPane1.setLeftComponent(jPanel2);
 
         RightPanel.setLayout(new java.awt.CardLayout());
 
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setBackground(new java.awt.Color(222, 242, 218));
 
-        tblTransport.setModel(new javax.swing.table.DefaultTableModel(
+        tblHC.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -142,15 +137,15 @@ public class Healthcamp extends javax.swing.JFrame {
                 "Hospital Name", "Patient Name", "Report Date", "Status", "Healthcamp Name", "Doctor Assigned"
             }
         ));
-        jScrollPane1.setViewportView(tblTransport);
+        jScrollPane1.setViewportView(tblHC);
 
-        jLabel1.setFont(new java.awt.Font("Calibri", 0, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(102, 153, 255));
+        jLabel1.setFont(new java.awt.Font("Tw Cen MT", 0, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 102, 0));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("HEALTHCAMP");
 
-        btnApprove.setBackground(new java.awt.Color(102, 153, 255));
-        btnApprove.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        btnApprove.setBackground(new java.awt.Color(0, 102, 0));
+        btnApprove.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
         btnApprove.setForeground(new java.awt.Color(255, 255, 255));
         btnApprove.setText("APPROVE");
         btnApprove.addActionListener(new java.awt.event.ActionListener() {
@@ -159,8 +154,8 @@ public class Healthcamp extends javax.swing.JFrame {
             }
         });
 
-        btnReject.setBackground(new java.awt.Color(102, 153, 255));
-        btnReject.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        btnReject.setBackground(new java.awt.Color(0, 102, 0));
+        btnReject.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
         btnReject.setForeground(new java.awt.Color(255, 255, 255));
         btnReject.setText("REJECT");
         btnReject.addActionListener(new java.awt.event.ActionListener() {
@@ -169,20 +164,10 @@ public class Healthcamp extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setBackground(new java.awt.Color(102, 153, 255));
-        jButton4.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setText("ANALYTICS");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-
-        btnApprove1.setBackground(new java.awt.Color(102, 153, 255));
-        btnApprove1.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        btnApprove1.setBackground(new java.awt.Color(0, 102, 0));
+        btnApprove1.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
         btnApprove1.setForeground(new java.awt.Color(255, 255, 255));
-        btnApprove1.setText("ASSIGN A DOCTOR");
+        btnApprove1.setText("ASSIGN DOCTOR");
         btnApprove1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnApprove1ActionPerformed(evt);
@@ -195,6 +180,9 @@ public class Healthcamp extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
+        jLabel2.setText("Please Select a Doctor");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -205,32 +193,26 @@ public class Healthcamp extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(26, 26, 26)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1015, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addGap(271, 271, 271)
-                                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                                        .addContainerGap()
-                                        .addComponent(btnApprove, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)))
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addGap(381, 381, 381)
-                                        .addComponent(btnApprove1, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addGap(29, 29, 29)
-                                        .addComponent(btnReject, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jButton4)))))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(26, 26, 26)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1015, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 5, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnApprove1, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(338, 338, 338))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(356, 356, 356)
+                .addComponent(btnApprove, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
+                .addGap(29, 29, 29)
+                .addComponent(btnReject, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel3Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnApprove, btnReject, jButton4});
+        jPanel3Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnApprove, btnReject});
 
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -239,16 +221,17 @@ public class Healthcamp extends javax.swing.JFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(51, 51, 51)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(70, 70, 70)
+                .addGap(66, 66, 66)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnApprove)
-                    .addComponent(btnReject)
-                    .addComponent(jButton4))
-                .addGap(32, 32, 32)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnApprove1)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(368, Short.MAX_VALUE))
+                    .addComponent(btnReject))
+                .addGap(67, 67, 67)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(46, 46, 46)
+                .addComponent(btnApprove1)
+                .addContainerGap(241, Short.MAX_VALUE))
         );
 
         RightPanel.add(jPanel3, "card2");
@@ -281,15 +264,13 @@ public class Healthcamp extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnApproveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApproveActionPerformed
-        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-        String date = dateFormat.format(java.util.Calendar.getInstance().getTime());
-        int selectedRow = tblTransport.getSelectedRow();
+        int selectedRow = tblHC.getSelectedRow();
         if(selectedRow == -1){
-            JOptionPane.showMessageDialog(null,"Select a row before choosing to view/delete record", " Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Please select a row", " Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        String name = (String) tblTransport.getValueAt(selectedRow, 1);
-        String date1 = (String) tblTransport.getValueAt(selectedRow, 2);
+        String name = (String) tblHC.getValueAt(selectedRow, 1);
+        String date1 = (String) tblHC.getValueAt(selectedRow, 2);
         healthcampController.updateStatus("APPROVED", date1);
         JOptionPane.showMessageDialog(null,"Request has been Approved", "Success!", JOptionPane.INFORMATION_MESSAGE);
         populateTable();
@@ -299,13 +280,13 @@ public class Healthcamp extends javax.swing.JFrame {
     private void btnRejectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRejectActionPerformed
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         String date = dateFormat.format(java.util.Calendar.getInstance().getTime());
-        int selectedRow = tblTransport.getSelectedRow();
+        int selectedRow = tblHC.getSelectedRow();
         if(selectedRow == -1){
-            JOptionPane.showMessageDialog(null,"Select a row before choosing to view/delete record", " Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Please select a row", " Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        String name = (String) tblTransport.getValueAt(selectedRow, 1);
-        String date1 = (String) tblTransport.getValueAt(selectedRow, 2);
+        String name = (String) tblHC.getValueAt(selectedRow, 1);
+        String date1 = (String) tblHC.getValueAt(selectedRow, 2);
         healthcampController.updateStatus("REJECTED", date1);
         JOptionPane.showMessageDialog(null,"Request has been Rejected", "Sorry!", JOptionPane.INFORMATION_MESSAGE);
         String m = JOptionPane.showInputDialog("Rejection Comment?");
@@ -319,27 +300,6 @@ public class Healthcamp extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnLogoutActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-        AdvancedFeatures.Analytics chart = new AdvancedFeatures.Analytics("Healthcamp Requests");
-        int accepted = 0;
-        int rejected = 0;
-        int pending = 0;
-
-        for (int row = 0; row < model.getRowCount(); row++) {
-
-            if (model.getValueAt(row, 3) == "APPROVED") {
-                accepted++;
-            } else if (model.getValueAt(row, 3) == "REJECTED") {
-                rejected++;
-            } else {
-                pending++;
-            }
-
-        }
-        chart.drawChart(accepted, rejected, pending, model.getColumnCount());
-    }//GEN-LAST:event_jButton4ActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         Healthcamp tm;
@@ -349,19 +309,15 @@ public class Healthcamp extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnApprove1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApprove1ActionPerformed
-        // TODO add your handling code here:
-        DefaultTableModel model = (DefaultTableModel) tblTransport.getModel();
-        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-        String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
-        int selectedRow = tblTransport.getSelectedRow();
+        int selectedRow = tblHC.getSelectedRow();
         if(selectedRow == -1){
-            JOptionPane.showMessageDialog(null,"Select a row before choosing to view/delete record", " Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Please select a row", " Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        String name = (String) tblTransport.getValueAt(selectedRow, 1);
+        String name = (String) tblHC.getValueAt(selectedRow, 1);
         String doctorAssigned = (String) jComboBox1.getSelectedItem();
-        String status = (String) tblTransport.getValueAt(selectedRow, 3);
-        String date1 = (String) tblTransport.getValueAt(selectedRow, 2);
+        String status = (String) tblHC.getValueAt(selectedRow, 3);
+        String date1 = (String) tblHC.getValueAt(selectedRow, 2);
         if(status.equals("APPROVED")){
             healthcampController.updateDoctorAssigned(doctorAssigned, date1);
             populateTable();
@@ -420,14 +376,14 @@ public class Healthcamp extends javax.swing.JFrame {
     private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnReject;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton4;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSplitPane jSplitPane1;
-    private javax.swing.JTable tblTransport;
+    private javax.swing.JTable tblHC;
     // End of variables declaration//GEN-END:variables
 }

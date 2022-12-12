@@ -19,9 +19,6 @@ import org.apache.log4j.Logger;
  */
 public class VaccineAvailability extends javax.swing.JPanel {
 
-    /**
-     * Creates new form VaccineManufRequests
-     */
     private MedicinesController medicineController;
     private DefaultTableModel model;
     static Logger log = Logger.getLogger(VaccineAvailability.class.getName());
@@ -34,7 +31,6 @@ public class VaccineAvailability extends javax.swing.JPanel {
         
         initComponents();
         medicineController = new MedicinesController();
-//        jList1.setModel(new DefaultListModel<>());
         populateTable();
     }
     
@@ -66,14 +62,16 @@ public class VaccineAvailability extends javax.swing.JPanel {
         btnCreate = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox<>();
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(222, 242, 218));
+
+        jPanel1.setBackground(new java.awt.Color(222, 242, 218));
         jPanel1.setPreferredSize(new java.awt.Dimension(1200, 800));
 
         jLabel2.setBackground(new java.awt.Color(51, 153, 255));
         jLabel2.setFont(new java.awt.Font("Calibri", 0, 36)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(51, 153, 255));
+        jLabel2.setForeground(new java.awt.Color(0, 102, 0));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("VACCINES AVAILABILITY");
+        jLabel2.setText("MEDICINES AVAILABILITY");
 
         tblVaccineAvailability.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -83,17 +81,19 @@ public class VaccineAvailability extends javax.swing.JPanel {
                 {null, null, null}
             },
             new String [] {
-                "Available Vaccines", "Available Quantity", "Price"
+                "AVAILABLE MEDICINES", "AVAILABLE QUANTITY", "UNIT PRICE"
             }
         ));
         jScrollPane1.setViewportView(tblVaccineAvailability);
 
+        jLabel4.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
         jLabel4.setText("Available Vaccines:");
 
+        jLabel5.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
         jLabel5.setText("Available Quantity:");
 
-        btnCreate.setBackground(new java.awt.Color(102, 153, 255));
-        btnCreate.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        btnCreate.setBackground(new java.awt.Color(0, 102, 0));
+        btnCreate.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
         btnCreate.setForeground(new java.awt.Color(255, 255, 255));
         btnCreate.setText("REQUEST VACCINE");
         btnCreate.addActionListener(new java.awt.event.ActionListener() {
@@ -146,7 +146,7 @@ public class VaccineAvailability extends javax.swing.JPanel {
                     .addComponent(txtAvailableQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addComponent(btnCreate)
-                .addContainerGap(170, Short.MAX_VALUE))
+                .addContainerGap(166, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

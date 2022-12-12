@@ -7,24 +7,19 @@ import Controller.BillController;
 import Controller.FundRaiserController;
 import Controller.PatientReportController;
 import UI.Login;
-import UI.Login;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
-import java.sql.*;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import org.apache.log4j.Logger;
 
 /**
  *
- * @author saisr
+ * @author pranitha
  */
 public class Account extends javax.swing.JFrame {
 
-    /**
-     * Creates new form MainMedicalEquipManuf
-     */
     private PatientReportController patientReportController;
     private BillController billController;
     private AccountController accountController;
@@ -54,7 +49,7 @@ public class Account extends javax.swing.JFrame {
     }
     
     public void populateTable(){
-        model = (DefaultTableModel) tblMedicalEquip.getModel();
+        model = (DefaultTableModel) accTable.getModel();
         model.setRowCount(0);
         ArrayList<Accounts> acc = accountController.getHealthcampRequests();
         for(Accounts a: acc){
@@ -83,7 +78,7 @@ public class Account extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblMedicalEquip = new javax.swing.JTable();
+        accTable = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
@@ -160,7 +155,7 @@ public class Account extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("ACCOUNT");
 
-        tblMedicalEquip.setModel(new javax.swing.table.DefaultTableModel(
+        accTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -171,7 +166,7 @@ public class Account extends javax.swing.JFrame {
                 "PATIENT NAME", "LAB", "TEST NAME", "HOSPITAL", "HEALTH CAMP", "DOCTOR"
             }
         ));
-        jScrollPane1.setViewportView(tblMedicalEquip);
+        jScrollPane1.setViewportView(accTable);
 
         jButton2.setBackground(new java.awt.Color(0, 119, 182));
         jButton2.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
@@ -301,9 +296,9 @@ public class Account extends javax.swing.JFrame {
 
     private void btnViewRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewRequestActionPerformed
 
-        Account mme;
-        mme = new Account();
-        mme.setVisible(true);
+        Account acc;
+        acc = new Account();
+        acc.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnViewRequestActionPerformed
 
@@ -313,16 +308,14 @@ public class Account extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLogoutActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        DefaultTableModel model = (DefaultTableModel) tblMedicalEquip.getModel();
-        int selectedRow = tblMedicalEquip.getSelectedRow();
+        int selectedRow = accTable.getSelectedRow();
         if(selectedRow == -1){
-            JOptionPane.showMessageDialog(null,"Select a row before choosing to view/delete record", " Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Please select a row", " Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        String name = (String) tblMedicalEquip.getValueAt(selectedRow, 0);
-        String test_name = (String) tblMedicalEquip.getValueAt(selectedRow, 2);
-        String healthcamp_name = (String) tblMedicalEquip.getValueAt(selectedRow, 4);
+        String name = (String) accTable.getValueAt(selectedRow, 0);
+        String test_name = (String) accTable.getValueAt(selectedRow, 2);
+        String healthcamp_name = (String) accTable.getValueAt(selectedRow, 4);
         ArrayList<String> medicines = patientReportController.getMedicinesFromPatientReports(name);
         String medicinenames = "";
         for(String medicine: medicines){
@@ -343,7 +336,6 @@ public class Account extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
         jLabel2.setVisible(true);
         String healthcampName = (String) jComboBox1.getSelectedItem();
         int totalBillSum = 0;
@@ -395,6 +387,7 @@ public class Account extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel RightPane;
+    private javax.swing.JTable accTable;
     private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnViewRequest;
     private javax.swing.JButton jButton2;
@@ -409,6 +402,5 @@ public class Account extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSplitPane jSplitPane1;
-    private javax.swing.JTable tblMedicalEquip;
     // End of variables declaration//GEN-END:variables
 }

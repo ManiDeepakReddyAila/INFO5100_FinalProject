@@ -11,8 +11,6 @@ import Controller.NotificationController;
 import Controller.OrganizationController;
 import Models.Notification;
 import UI.Login;
-import UI.Login;
-import UI.PatientReport;
 import UI.PatientReport;
 import java.awt.CardLayout;
 import java.text.DateFormat;
@@ -24,13 +22,10 @@ import org.apache.log4j.Logger;
 
 /**
  *
- * @author aesha
+ * @author saideepak
  */
 public class Lab extends javax.swing.JFrame {
 
-    /**
-     * Creates new form FoodMarketMain
-     */
     private String username;
     private LabController labController;
     private HospitalController hospitalController;
@@ -171,9 +166,9 @@ public class Lab extends javax.swing.JFrame {
                 .addComponent(jButton4)
                 .addGap(37, 37, 37)
                 .addComponent(btnViewRequest)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 566, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 623, Short.MAX_VALUE)
                 .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(72, 72, 72))
+                .addGap(16, 16, 16))
         );
 
         jSplitPane1.setLeftComponent(jPanel1);
@@ -280,15 +275,15 @@ public class Lab extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(112, 112, 112)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jButton2)
                                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(95, 95, 95)))))
+                                    .addComponent(jLabel3))
+                                .addGap(112, 112, 112)))))
                 .addContainerGap(43, Short.MAX_VALUE))
         );
 
@@ -307,7 +302,7 @@ public class Lab extends javax.swing.JFrame {
                     .addComponent(btnReject)
                     .addComponent(jButton3)
                     .addComponent(btnApprove1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -352,7 +347,7 @@ public class Lab extends javax.swing.JFrame {
 //        String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
         int selectedRow = tblLab.getSelectedRow();
         if(selectedRow == -1){
-            JOptionPane.showMessageDialog(null,"Select a row before choosing to view/delete record", " Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Please select a row", " Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
         String name = (String) tblLab.getValueAt(selectedRow, 1);
@@ -366,7 +361,7 @@ public class Lab extends javax.swing.JFrame {
     private void btnRejectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRejectActionPerformed
         int selectedRow = tblLab.getSelectedRow();
         if(selectedRow == -1){
-            JOptionPane.showMessageDialog(null,"Select a row before choosing to view/delete record", " Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Please select a row", " Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
         String name = (String) tblLab.getValueAt(selectedRow, 1);
@@ -411,7 +406,7 @@ public class Lab extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) tblLab.getModel();
         int selectedRow = tblLab.getSelectedRow();
         if(selectedRow == -1){
-            JOptionPane.showMessageDialog(null,"Select a row before choosing to view/delete record", " Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Please select a row", " Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
         String name = (String) tblLab.getValueAt(selectedRow, 1);
@@ -431,7 +426,7 @@ public class Lab extends javax.swing.JFrame {
         
         int selectedRow = tblLab.getSelectedRow();
         if(selectedRow == -1){
-            JOptionPane.showMessageDialog(null,"Select a row before choosing to view/delete record", " Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Please select a row", " Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
         String patientName = (String) tblLab.getValueAt(selectedRow, 1);

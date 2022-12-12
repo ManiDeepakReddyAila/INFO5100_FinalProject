@@ -8,20 +8,14 @@ import Models.HospitalRequests;
 import Controller.HospitalController;
 import Controller.OrganizationController;
 import Controller.PatientReportController;
-import UI.Login;
 import Models.PatientReports;
 import Controller.HealthcampController;
 import Controller.NotificationController;
 import Models.Notification;
 import UI.Login;
 import UI.PatientReport;
-import UI.PatientReport;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Random;
 import javax.swing.JOptionPane;
@@ -53,12 +47,11 @@ public class Hospital extends javax.swing.JFrame {
         jButton3.setVisible(false);
         jButton4.setVisible(false);
         this.username = username;
-        model = (DefaultTableModel) tblClothingRtl.getModel();
+        model = (DefaultTableModel) tblHos.getModel();
         healthcampController = new HealthcampController();
         patientReportController = new PatientReportController();
         hospitalController = new HospitalController();
         organizationController = new OrganizationController();
-//        jButton4.setVisible(false);
         populateTable(username);
         ArrayList<String> drr = organizationController.getDoctorNames();
         jComboBox1.removeAllItems();
@@ -97,7 +90,7 @@ public class Hospital extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblClothingRtl = new javax.swing.JTable();
+        tblHos = new javax.swing.JTable();
         btnApprove = new javax.swing.JButton();
         btnReject = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
@@ -194,8 +187,8 @@ public class Hospital extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("HOSPITAL REQUEST");
 
-        tblClothingRtl.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        tblClothingRtl.setModel(new javax.swing.table.DefaultTableModel(
+        tblHos.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        tblHos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
@@ -206,8 +199,8 @@ public class Hospital extends javax.swing.JFrame {
                 "Hospital Name", "Patient Name", "Report Date", "Lab Name", "Test Name", "Status", "Description"
             }
         ));
-        tblClothingRtl.setGridColor(new java.awt.Color(204, 204, 204));
-        jScrollPane1.setViewportView(tblClothingRtl);
+        tblHos.setGridColor(new java.awt.Color(204, 204, 204));
+        jScrollPane1.setViewportView(tblHos);
 
         btnApprove.setBackground(new java.awt.Color(0, 102, 0));
         btnApprove.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
@@ -348,15 +341,14 @@ public class Hospital extends javax.swing.JFrame {
                                 .addComponent(jButton4)))
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(102, 102, 102)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGap(185, 185, 185)
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(22, 22, 22))))
+                                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(102, 102, 102)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 547, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 999, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 50, Short.MAX_VALUE))
             .addGroup(jPanel3Layout.createSequentialGroup()
@@ -402,12 +394,12 @@ public class Hospital extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel21))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(nameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(vitalsField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(hgField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -478,13 +470,13 @@ public class Hospital extends javax.swing.JFrame {
     }//GEN-LAST:event_nameFieldActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        int selectedRow = tblClothingRtl.getSelectedRow();
+        int selectedRow = tblHos.getSelectedRow();
         if(selectedRow == -1){
-            JOptionPane.showMessageDialog(null,"Select a row before choosing to view/delete record", " Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Please select a row", " Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        String name = (String) tblClothingRtl.getValueAt(selectedRow, 1);
-        String status = (String) tblClothingRtl.getValueAt(selectedRow, 5);
+        String name = (String) tblHos.getValueAt(selectedRow, 1);
+        String status = (String) tblHos.getValueAt(selectedRow, 5);
         if(status.equals("APPROVED")){
             ArrayList<PatientReports> prr = patientReportController.getPatientReports(name);
             for(PatientReports pr: prr){
@@ -526,13 +518,13 @@ public class Hospital extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnRejectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRejectActionPerformed
-        int selectedRow = tblClothingRtl.getSelectedRow();
+        int selectedRow = tblHos.getSelectedRow();
         if(selectedRow == -1){
-            JOptionPane.showMessageDialog(null,"Select a row before choosing to view/delete record", " Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Please select a row", " Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        String name = (String) tblClothingRtl.getValueAt(selectedRow, 1);
-        String date = (String) tblClothingRtl.getValueAt(selectedRow, 2);
+        String name = (String) tblHos.getValueAt(selectedRow, 1);
+        String date = (String) tblHos.getValueAt(selectedRow, 2);
         hospitalController.updateStatus("REJECTED", date);
         JOptionPane.showMessageDialog(null,"Hospital Request has been rejected", "Sorry!", JOptionPane.INFORMATION_MESSAGE);
         populateTable(username);
@@ -541,13 +533,13 @@ public class Hospital extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRejectActionPerformed
 
     private void btnApproveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApproveActionPerformed
-        int selectedRow = tblClothingRtl.getSelectedRow();
+        int selectedRow = tblHos.getSelectedRow();
         if(selectedRow == -1){
-            JOptionPane.showMessageDialog(null,"Select a row before choosing to view/delete record", " Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Please select a row", " Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        String name = (String) tblClothingRtl.getValueAt(selectedRow, 1);
-        String date = (String) tblClothingRtl.getValueAt(selectedRow, 2);
+        String name = (String) tblHos.getValueAt(selectedRow, 1);
+        String date = (String) tblHos.getValueAt(selectedRow, 2);
         hospitalController.updateStatus("APPROVED", date);
         JOptionPane.showMessageDialog(null,"Hospital Request has been approved", "Success!", JOptionPane.INFORMATION_MESSAGE);
         populateTable(username);
@@ -556,7 +548,7 @@ public class Hospital extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         Random rand = new Random();
-        String[] randomVitals = {"ECG is Abnormal, suggested Cardio Healthcamp", "Weak bone strength, suggested Orthopaedic"};
+        String[] randomVitals = {"ECG is Abnormal, suggested Cardio Healthcamp", "Weak bone strength, suggested Orthopaedic","Low WBC count, suggested Cancer Healthcamp"};
         String suggestion = randomVitals[rand.nextInt(randomVitals.length)];
         jLabel3.setText("Suggestion: " + suggestion);
         hospitalController.updateSugestion(suggestion, nameField.getText());
@@ -567,9 +559,9 @@ public class Hospital extends javax.swing.JFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         String date = dateFormat.format(java.util.Calendar.getInstance().getTime());
-        int selectedRow = tblClothingRtl.getSelectedRow();
+        int selectedRow = tblHos.getSelectedRow();
         if(selectedRow == -1){
-            JOptionPane.showMessageDialog(null,"Select a row before choosing to view/delete record", " Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Please select a row", " Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
         PatientReport newjFrame = new PatientReport(nameField.getText());
@@ -579,17 +571,17 @@ public class Hospital extends javax.swing.JFrame {
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         String date = dateFormat.format(java.util.Calendar.getInstance().getTime());
-        int selectedRow = tblClothingRtl.getSelectedRow();
+        int selectedRow = tblHos.getSelectedRow();
         if(selectedRow == -1){
-            JOptionPane.showMessageDialog(null,"Select a row before choosing to view/delete record", " Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Please select a row", " Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        String patientName = (String) tblClothingRtl.getValueAt(selectedRow, 1);
+        String patientName = (String) tblHos.getValueAt(selectedRow, 1);
         String healthcampName = (String) jComboBox1.getSelectedItem();
         String status = "Pending";
         String doctorAssigned = "Not Assigned";
-        String hospitalName = (String) tblClothingRtl.getValueAt(selectedRow, 0);
-        String statusNew = (String) tblClothingRtl.getValueAt(selectedRow, 5);
+        String hospitalName = (String) tblHos.getValueAt(selectedRow, 0);
+        String statusNew = (String) tblHos.getValueAt(selectedRow, 5);
         if(statusNew.equals("APPROVED")){
             healthcampController.insertHealthcampRequests(hospitalName, patientName, status, date, healthcampName, doctorAssigned);
             JOptionPane.showMessageDialog(null,"Healthcamp Request has been created", "Success!", JOptionPane.INFORMATION_MESSAGE);
@@ -700,7 +692,7 @@ public class Hospital extends javax.swing.JFrame {
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JTextField nameField;
     private javax.swing.JTextField rbcField;
-    private javax.swing.JTable tblClothingRtl;
+    private javax.swing.JTable tblHos;
     private javax.swing.JTextField vitalsField;
     private javax.swing.JTextField wbcField;
     // End of variables declaration//GEN-END:variables

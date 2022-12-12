@@ -8,7 +8,6 @@ import Models.PharmacyRequest;
 import Controller.PatientReportController;
 import Controller.PharmacyRequestsController;
 import UI.Login;
-import UI.Login;
 import java.awt.CardLayout;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -18,13 +17,9 @@ import javax.swing.table.DefaultTableModel;
 import org.apache.log4j.Logger;
 /**
  *
- * @author aesha
+ * @author pranitha
  */
 public class Pharmacy extends javax.swing.JFrame {
-
-    /**
-     * Creates new form VaccineMfrMain
-     */
     private PatientReportController patientReportController;
     private PharmacyRequestsController pharmacyRequestsController;
     DefaultTableModel model;
@@ -34,7 +29,7 @@ public class Pharmacy extends javax.swing.JFrame {
         patientReportController = new PatientReportController();
         pharmacyRequestsController = new PharmacyRequestsController();
         jList1.setModel(new DefaultListModel<>());
-        model = (DefaultTableModel) tblVaccine.getModel();
+        model = (DefaultTableModel) tblPharm.getModel();
         model.setRowCount(0);
         ArrayList<PharmacyRequest> prr = pharmacyRequestsController.getPharmacyRequests();
         for(PharmacyRequest pr: prr){
@@ -64,11 +59,11 @@ public class Pharmacy extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblVaccine = new javax.swing.JTable();
-        jLabel4 = new javax.swing.JLabel();
+        tblPharm = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
+        jLabel2 = new javax.swing.JLabel();
 
         jCheckBoxMenuItem1.setSelected(true);
         jCheckBoxMenuItem1.setText("jCheckBoxMenuItem1");
@@ -85,10 +80,10 @@ public class Pharmacy extends javax.swing.JFrame {
 
         jSplitPane1.setPreferredSize(new java.awt.Dimension(1271, 729));
 
-        jPanel1.setBackground(new java.awt.Color(51, 153, 255));
+        jPanel1.setBackground(new java.awt.Color(0, 102, 0));
 
-        btnview.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        btnview.setForeground(new java.awt.Color(51, 153, 255));
+        btnview.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
+        btnview.setForeground(new java.awt.Color(0, 102, 0));
         btnview.setText("VIEW REQUESTS");
         btnview.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -96,8 +91,8 @@ public class Pharmacy extends javax.swing.JFrame {
             }
         });
 
-        btnAvailability.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        btnAvailability.setForeground(new java.awt.Color(51, 153, 255));
+        btnAvailability.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
+        btnAvailability.setForeground(new java.awt.Color(0, 102, 0));
         btnAvailability.setText("AVAILABILITY");
         btnAvailability.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -105,7 +100,9 @@ public class Pharmacy extends javax.swing.JFrame {
             }
         });
 
-        btnLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logoutimage.png"))); // NOI18N
+        btnLogout.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
+        btnLogout.setForeground(new java.awt.Color(0, 102, 0));
+        btnLogout.setText("LOGOUT");
         btnLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLogoutActionPerformed(evt);
@@ -117,12 +114,15 @@ public class Pharmacy extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(btnAvailability, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnview, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE))
-                    .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnAvailability, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnview, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -132,24 +132,24 @@ public class Pharmacy extends javax.swing.JFrame {
                 .addComponent(btnview)
                 .addGap(17, 17, 17)
                 .addComponent(btnAvailability)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 555, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 512, Short.MAX_VALUE)
                 .addComponent(btnLogout)
-                .addContainerGap())
+                .addGap(74, 74, 74))
         );
 
         jSplitPane1.setLeftComponent(jPanel1);
 
         RightPanel.setLayout(new java.awt.CardLayout());
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBackground(new java.awt.Color(222, 242, 218));
         jPanel2.setPreferredSize(new java.awt.Dimension(1042, 785));
 
-        jLabel1.setFont(new java.awt.Font("Calibri", 0, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(102, 153, 255));
+        jLabel1.setFont(new java.awt.Font("Tw Cen MT", 0, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 102, 0));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("VACCINE MANUFACTURER");
+        jLabel1.setText("PHARMACY");
 
-        tblVaccine.setModel(new javax.swing.table.DefaultTableModel(
+        tblPharm.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -160,16 +160,17 @@ public class Pharmacy extends javax.swing.JFrame {
                 "Patient Name", "Healthcamp", "Doctor", "Status"
             }
         ));
-        tblVaccine.addMouseListener(new java.awt.event.MouseAdapter() {
+        tblPharm.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblVaccineMouseClicked(evt);
+                tblPharmMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(tblVaccine);
+        jScrollPane1.setViewportView(tblPharm);
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/vaccineimg.jpg"))); // NOI18N
-
-        jButton1.setText("Process Request");
+        jButton1.setBackground(new java.awt.Color(0, 102, 0));
+        jButton1.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("PROCESS REQUEST");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -183,45 +184,44 @@ public class Pharmacy extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(jList1);
 
+        jLabel2.setFont(new java.awt.Font("Tw Cen MT", 0, 14)); // NOI18N
+        jLabel2.setText("Medicines :");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1052, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(74, 74, 74)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 656, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1052, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 656, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(125, 125, 125)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(52, 52, 52))))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(52, 52, 52))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(321, 321, 321)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(84, 84, 84))
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(597, 597, 597))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(54, 54, 54)
+                .addGap(20, 20, 20)
+                .addComponent(jLabel2)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(94, 94, 94)
-                        .addComponent(jButton1))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(48, 48, 48)
-                        .addComponent(jLabel4)))
-                .addContainerGap(140, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(33, 33, 33)
+                .addComponent(jButton1)
+                .addContainerGap(382, Short.MAX_VALUE))
         );
 
         RightPanel.add(jPanel2, "card2");
@@ -243,10 +243,9 @@ public class Pharmacy extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnviewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnviewActionPerformed
-        // TODO add your handling code here:
-        Pharmacy mvm;
-        mvm = new Pharmacy();
-        mvm.setVisible(true);
+        Pharmacy pharm;
+        pharm = new Pharmacy();
+        pharm.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnviewActionPerformed
 
@@ -262,13 +261,13 @@ public class Pharmacy extends javax.swing.JFrame {
         layout.next(RightPanel);
     }//GEN-LAST:event_btnAvailabilityActionPerformed
 
-    private void tblVaccineMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblVaccineMouseClicked
-        int selectedRow = tblVaccine.getSelectedRow();
+    private void tblPharmMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPharmMouseClicked
+        int selectedRow = tblPharm.getSelectedRow();
         if(selectedRow == -1){
-            JOptionPane.showMessageDialog(null,"Select a row before choosing to view/delete record", " Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Please select a row!", " Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        String patient_name = (String) tblVaccine.getValueAt(selectedRow, 0);
+        String patient_name = (String) tblPharm.getValueAt(selectedRow, 0);
         String medicines = "";
         ArrayList<String> medicineNames = patientReportController.getMedicinesFromPatientReports(patient_name);
         for(String medicine: medicineNames){
@@ -279,17 +278,17 @@ public class Pharmacy extends javax.swing.JFrame {
         for(String s: Arrays.asList(medicines.split("<>"))){
            defaultListModel.addElement(s);
         }
-    }//GEN-LAST:event_tblVaccineMouseClicked
+    }//GEN-LAST:event_tblPharmMouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        DefaultTableModel model = (DefaultTableModel) tblVaccine.getModel();
-        int selectedRow = tblVaccine.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) tblPharm.getModel();
+        int selectedRow = tblPharm.getSelectedRow();
         if(selectedRow == -1){
-            JOptionPane.showMessageDialog(null,"Select a row before choosing to view/delete record", " Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Please select a row!", " Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        String patient_name = (String) tblVaccine.getValueAt(selectedRow, 0);
+        String patient_name = (String) tblPharm.getValueAt(selectedRow, 0);
         String medicines = "";
         ArrayList<String> medicineNames = patientReportController.getMedicinesFromPatientReports(patient_name);
         for(String medicine: medicineNames){
@@ -308,9 +307,6 @@ public class Pharmacy extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jList1MouseClicked
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -346,7 +342,7 @@ public class Pharmacy extends javax.swing.JFrame {
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem2;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem3;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JList<String> jList1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
@@ -354,6 +350,6 @@ public class Pharmacy extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSplitPane jSplitPane1;
-    private javax.swing.JTable tblVaccine;
+    private javax.swing.JTable tblPharm;
     // End of variables declaration//GEN-END:variables
 }

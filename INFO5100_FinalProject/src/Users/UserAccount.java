@@ -6,13 +6,12 @@ package Users;
 
 /**
  *
- * @author aesha
+ * @author manideepakreddyaila
  */
 public class UserAccount {
 
     private String username;
     private String password;
-    //private Role role;
     private String name;
     private String network;
 

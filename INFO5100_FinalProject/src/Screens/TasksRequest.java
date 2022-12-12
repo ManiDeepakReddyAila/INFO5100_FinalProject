@@ -7,13 +7,7 @@ package Screens;
 import Controller.AdminController;
 import Controller.OrganizationController;
 import Models.AdminRequests;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import javax.swing.JPanel;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -23,10 +17,6 @@ import javax.swing.table.DefaultTableModel;
  * @author saideepak
  */
 public class TasksRequest extends javax.swing.JPanel {
-
-    /**
-     * Creates new form TasksRequest
-     */
     private AdminController adminController;
     private JPanel RightPanel;
     private DefaultTableModel md;
@@ -158,7 +148,7 @@ public class TasksRequest extends javax.swing.JPanel {
     private void btnApproveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApproveActionPerformed
         int selectedRow = tblManageRequest.getSelectedRow();
         if(selectedRow == -1){
-            JOptionPane.showMessageDialog(null,"Select a row before choosing to view/delete record", " Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Please select a row!", " Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
         String healthcampName = (String) tblManageRequest.getValueAt(selectedRow, 0);
@@ -172,7 +162,7 @@ public class TasksRequest extends javax.swing.JPanel {
     private void btnRejectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRejectActionPerformed
         int selectedRow = tblManageRequest.getSelectedRow();
         if(selectedRow == -1){
-            JOptionPane.showMessageDialog(null,"Select a row before choosing to view/delete record", " Info", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Please select a row!", " Info", JOptionPane.WARNING_MESSAGE);
             return;
         }
         String healthcampName = (String) tblManageRequest.getValueAt(selectedRow, 0);

@@ -13,6 +13,7 @@ import Controller.LoginController;
 import Screens.HierarchyManage;
 import java.awt.CardLayout;
 import java.util.List;
+import javax.swing.JOptionPane;
 import org.apache.log4j.Logger;
 
 /**
@@ -211,8 +212,10 @@ public class Login extends javax.swing.JFrame {
         String password = String.valueOf(passwordArr);
         
         List<User> users = loginController.getUsers();
+        int count = 0;
         for(User u: users){
             if(UserName.equalsIgnoreCase(u.getUsername()) && password.equalsIgnoreCase(u.getPassword())){
+                count = 1;
                 String org = u.getOrganization();
                 if (org.equalsIgnoreCase("Admin")) {
                         hr = new HierarchyManage();
@@ -266,7 +269,11 @@ public class Login extends javax.swing.JFrame {
                         return;
                     }
             }
-        }   
+        }  
+        if(count == 0){
+            JOptionPane.showMessageDialog(null,"Invalid Username/Password", "Sorry!", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

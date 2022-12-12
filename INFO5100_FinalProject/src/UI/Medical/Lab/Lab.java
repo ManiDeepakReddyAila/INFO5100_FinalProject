@@ -49,6 +49,7 @@ public class Lab extends javax.swing.JFrame {
         model.setRowCount(0);
         
         populateTable(name);
+        populateTable1();
         jComboBox1.removeAllItems();
         ArrayList<String> hospitals = orgController.getHospitalNames();
         for(String s: hospitals){

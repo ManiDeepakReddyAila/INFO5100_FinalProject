@@ -8,7 +8,6 @@ import Models.PharmacyRequest;
 import Controller.PatientReportController;
 import Controller.PharmacyRequestsController;
 import UI.Login;
-import UI.Login;
 import java.awt.CardLayout;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -21,10 +20,6 @@ import org.apache.log4j.Logger;
  * @author pranitha
  */
 public class Pharmacy extends javax.swing.JFrame {
-
-    /**
-     * Creates new form VaccineMfrMain
-     */
     private PatientReportController patientReportController;
     private PharmacyRequestsController pharmacyRequestsController;
     DefaultTableModel model;
@@ -34,7 +29,7 @@ public class Pharmacy extends javax.swing.JFrame {
         patientReportController = new PatientReportController();
         pharmacyRequestsController = new PharmacyRequestsController();
         jList1.setModel(new DefaultListModel<>());
-        model = (DefaultTableModel) tblVaccine.getModel();
+        model = (DefaultTableModel) tblPharm.getModel();
         model.setRowCount(0);
         ArrayList<PharmacyRequest> prr = pharmacyRequestsController.getPharmacyRequests();
         for(PharmacyRequest pr: prr){
@@ -64,7 +59,7 @@ public class Pharmacy extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblVaccine = new javax.swing.JTable();
+        tblPharm = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -155,7 +150,7 @@ public class Pharmacy extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("PHARMACY");
 
-        tblVaccine.setModel(new javax.swing.table.DefaultTableModel(
+        tblPharm.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -166,12 +161,12 @@ public class Pharmacy extends javax.swing.JFrame {
                 "Patient Name", "Healthcamp", "Doctor", "Status"
             }
         ));
-        tblVaccine.addMouseListener(new java.awt.event.MouseAdapter() {
+        tblPharm.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblVaccineMouseClicked(evt);
+                tblPharmMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(tblVaccine);
+        jScrollPane1.setViewportView(tblPharm);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/vaccineimg.jpg"))); // NOI18N
 
@@ -257,10 +252,9 @@ public class Pharmacy extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnviewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnviewActionPerformed
-        // TODO add your handling code here:
-        Pharmacy mvm;
-        mvm = new Pharmacy();
-        mvm.setVisible(true);
+        Pharmacy pharm;
+        pharm = new Pharmacy();
+        pharm.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnviewActionPerformed
 
@@ -276,13 +270,13 @@ public class Pharmacy extends javax.swing.JFrame {
         layout.next(RightPanel);
     }//GEN-LAST:event_btnAvailabilityActionPerformed
 
-    private void tblVaccineMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblVaccineMouseClicked
-        int selectedRow = tblVaccine.getSelectedRow();
+    private void tblPharmMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPharmMouseClicked
+        int selectedRow = tblPharm.getSelectedRow();
         if(selectedRow == -1){
-            JOptionPane.showMessageDialog(null,"Select a row before choosing to view/delete record", " Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Please select a row!", " Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        String patient_name = (String) tblVaccine.getValueAt(selectedRow, 0);
+        String patient_name = (String) tblPharm.getValueAt(selectedRow, 0);
         String medicines = "";
         ArrayList<String> medicineNames = patientReportController.getMedicinesFromPatientReports(patient_name);
         for(String medicine: medicineNames){
@@ -293,17 +287,17 @@ public class Pharmacy extends javax.swing.JFrame {
         for(String s: Arrays.asList(medicines.split("<>"))){
            defaultListModel.addElement(s);
         }
-    }//GEN-LAST:event_tblVaccineMouseClicked
+    }//GEN-LAST:event_tblPharmMouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        DefaultTableModel model = (DefaultTableModel) tblVaccine.getModel();
-        int selectedRow = tblVaccine.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) tblPharm.getModel();
+        int selectedRow = tblPharm.getSelectedRow();
         if(selectedRow == -1){
-            JOptionPane.showMessageDialog(null,"Select a row before choosing to view/delete record", " Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Please select a row!", " Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        String patient_name = (String) tblVaccine.getValueAt(selectedRow, 0);
+        String patient_name = (String) tblPharm.getValueAt(selectedRow, 0);
         String medicines = "";
         ArrayList<String> medicineNames = patientReportController.getMedicinesFromPatientReports(patient_name);
         for(String medicine: medicineNames){
@@ -322,9 +316,6 @@ public class Pharmacy extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jList1MouseClicked
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -369,6 +360,6 @@ public class Pharmacy extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSplitPane jSplitPane1;
-    private javax.swing.JTable tblVaccine;
+    private javax.swing.JTable tblPharm;
     // End of variables declaration//GEN-END:variables
 }

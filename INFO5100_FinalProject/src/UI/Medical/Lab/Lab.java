@@ -11,8 +11,6 @@ import Controller.NotificationController;
 import Controller.OrganizationController;
 import Models.Notification;
 import UI.Login;
-import UI.Login;
-import UI.PatientReport;
 import UI.PatientReport;
 import java.awt.CardLayout;
 import java.text.DateFormat;
@@ -28,9 +26,6 @@ import org.apache.log4j.Logger;
  */
 public class Lab extends javax.swing.JFrame {
 
-    /**
-     * Creates new form FoodMarketMain
-     */
     private String username;
     private LabController labController;
     private HospitalController hospitalController;
@@ -347,7 +342,7 @@ public class Lab extends javax.swing.JFrame {
 //        String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
         int selectedRow = tblLab.getSelectedRow();
         if(selectedRow == -1){
-            JOptionPane.showMessageDialog(null,"Select a row before choosing to view/delete record", " Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Please select a row", " Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
         String name = (String) tblLab.getValueAt(selectedRow, 1);
@@ -361,7 +356,7 @@ public class Lab extends javax.swing.JFrame {
     private void btnRejectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRejectActionPerformed
         int selectedRow = tblLab.getSelectedRow();
         if(selectedRow == -1){
-            JOptionPane.showMessageDialog(null,"Select a row before choosing to view/delete record", " Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Please select a row", " Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
         String name = (String) tblLab.getValueAt(selectedRow, 1);
@@ -406,7 +401,7 @@ public class Lab extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) tblLab.getModel();
         int selectedRow = tblLab.getSelectedRow();
         if(selectedRow == -1){
-            JOptionPane.showMessageDialog(null,"Select a row before choosing to view/delete record", " Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Please select a row", " Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
         String name = (String) tblLab.getValueAt(selectedRow, 1);
@@ -426,7 +421,7 @@ public class Lab extends javax.swing.JFrame {
         
         int selectedRow = tblLab.getSelectedRow();
         if(selectedRow == -1){
-            JOptionPane.showMessageDialog(null,"Select a row before choosing to view/delete record", " Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Please select a row", " Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
         String patientName = (String) tblLab.getValueAt(selectedRow, 1);

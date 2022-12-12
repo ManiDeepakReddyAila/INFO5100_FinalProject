@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package UI.Service.Healthcamp;
 
 import Models.HealthcampRequests;
@@ -22,9 +18,6 @@ import org.apache.log4j.Logger;
  */
 public class Healthcamp extends javax.swing.JFrame {
 
-    /**
-     * Creates new form TransportMain
-     */
     private OrganizationController organizationController;
     private HealthcampController healthcampController;
     private NotificationController notificationController;
@@ -46,7 +39,7 @@ public class Healthcamp extends javax.swing.JFrame {
     }
     
     public void populateTable(){
-        model = (DefaultTableModel) tblTransport.getModel();
+        model = (DefaultTableModel) tblHC.getModel();
         model.setRowCount(0);
         ArrayList<HealthcampRequests> hcrr = healthcampController.getHealthcampRequests();
         for(HealthcampRequests hr: hcrr){
@@ -74,7 +67,7 @@ public class Healthcamp extends javax.swing.JFrame {
         RightPanel = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblTransport = new javax.swing.JTable();
+        tblHC = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         btnApprove = new javax.swing.JButton();
         btnReject = new javax.swing.JButton();
@@ -134,7 +127,7 @@ public class Healthcamp extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(222, 242, 218));
 
-        tblTransport.setModel(new javax.swing.table.DefaultTableModel(
+        tblHC.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -145,7 +138,7 @@ public class Healthcamp extends javax.swing.JFrame {
                 "Hospital Name", "Patient Name", "Report Date", "Status", "Healthcamp Name", "Doctor Assigned"
             }
         ));
-        jScrollPane1.setViewportView(tblTransport);
+        jScrollPane1.setViewportView(tblHC);
 
         jLabel1.setFont(new java.awt.Font("Tw Cen MT", 0, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 102, 0));
@@ -286,15 +279,13 @@ public class Healthcamp extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnApproveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApproveActionPerformed
-        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-        String date = dateFormat.format(java.util.Calendar.getInstance().getTime());
-        int selectedRow = tblTransport.getSelectedRow();
+        int selectedRow = tblHC.getSelectedRow();
         if(selectedRow == -1){
-            JOptionPane.showMessageDialog(null,"Select a row before choosing to view/delete record", " Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Please select a row", " Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        String name = (String) tblTransport.getValueAt(selectedRow, 1);
-        String date1 = (String) tblTransport.getValueAt(selectedRow, 2);
+        String name = (String) tblHC.getValueAt(selectedRow, 1);
+        String date1 = (String) tblHC.getValueAt(selectedRow, 2);
         healthcampController.updateStatus("APPROVED", date1);
         JOptionPane.showMessageDialog(null,"Request has been Approved", "Success!", JOptionPane.INFORMATION_MESSAGE);
         populateTable();
@@ -304,13 +295,13 @@ public class Healthcamp extends javax.swing.JFrame {
     private void btnRejectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRejectActionPerformed
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         String date = dateFormat.format(java.util.Calendar.getInstance().getTime());
-        int selectedRow = tblTransport.getSelectedRow();
+        int selectedRow = tblHC.getSelectedRow();
         if(selectedRow == -1){
-            JOptionPane.showMessageDialog(null,"Select a row before choosing to view/delete record", " Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Please select a row", " Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        String name = (String) tblTransport.getValueAt(selectedRow, 1);
-        String date1 = (String) tblTransport.getValueAt(selectedRow, 2);
+        String name = (String) tblHC.getValueAt(selectedRow, 1);
+        String date1 = (String) tblHC.getValueAt(selectedRow, 2);
         healthcampController.updateStatus("REJECTED", date1);
         JOptionPane.showMessageDialog(null,"Request has been Rejected", "Sorry!", JOptionPane.INFORMATION_MESSAGE);
         String m = JOptionPane.showInputDialog("Rejection Comment?");
@@ -354,19 +345,15 @@ public class Healthcamp extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnApprove1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApprove1ActionPerformed
-        // TODO add your handling code here:
-        DefaultTableModel model = (DefaultTableModel) tblTransport.getModel();
-        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-        String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
-        int selectedRow = tblTransport.getSelectedRow();
+        int selectedRow = tblHC.getSelectedRow();
         if(selectedRow == -1){
-            JOptionPane.showMessageDialog(null,"Select a row before choosing to view/delete record", " Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Please select a row", " Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        String name = (String) tblTransport.getValueAt(selectedRow, 1);
+        String name = (String) tblHC.getValueAt(selectedRow, 1);
         String doctorAssigned = (String) jComboBox1.getSelectedItem();
-        String status = (String) tblTransport.getValueAt(selectedRow, 3);
-        String date1 = (String) tblTransport.getValueAt(selectedRow, 2);
+        String status = (String) tblHC.getValueAt(selectedRow, 3);
+        String date1 = (String) tblHC.getValueAt(selectedRow, 2);
         if(status.equals("APPROVED")){
             healthcampController.updateDoctorAssigned(doctorAssigned, date1);
             populateTable();
@@ -434,6 +421,6 @@ public class Healthcamp extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSplitPane jSplitPane1;
-    private javax.swing.JTable tblTransport;
+    private javax.swing.JTable tblHC;
     // End of variables declaration//GEN-END:variables
 }

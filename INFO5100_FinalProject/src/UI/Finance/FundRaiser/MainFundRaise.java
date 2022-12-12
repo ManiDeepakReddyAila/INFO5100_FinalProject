@@ -14,9 +14,6 @@ import org.apache.log4j.Logger;
  */
 public class MainFundRaise extends javax.swing.JPanel {
 
-    /**
-     * Creates new form VaccineManufRequests
-     */
     private SponsorController sponsorController;
     private String healthcampName;
     private int totalAmount;
@@ -30,7 +27,6 @@ public class MainFundRaise extends javax.swing.JPanel {
         this.healthcampName = healthcampName;
         this.totalAmount = totalAmount;
         heading.setText(heading.getText() + healthcampName);
-//        jProgressBar1.setOrientation(JProgressBar.VERTICAL);
         int totalDonated = 0;
         ArrayList<Integer> totalDonated1 = sponsorController.getFundRaiserRequests(healthcampName);
         for(Integer td: totalDonated1){

@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package UI;
 
 import UI.Service.Pharmacy.Pharmacy;
@@ -12,11 +8,8 @@ import UI.Medical.Lab.Lab;
 import UI.Finance.FundRaiser.Fundraiser;
 import UI.Finance.Sponsor.Sponsor;
 import UI.Finance.Account.Account;
-import Models.User;
 import Controller.LoginController;
 import Screens.HierarchyManage;
-import java.awt.CardLayout;
-import java.util.List;
 import org.apache.log4j.Logger;
 
 /**
@@ -25,9 +18,6 @@ import org.apache.log4j.Logger;
  */
 public class HomeScreen extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Login
-     */
     private LoginController loginController;
     public HierarchyManage hr;
     public Fundraiser fr;

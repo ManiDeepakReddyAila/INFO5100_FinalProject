@@ -33,7 +33,7 @@ public class Sponsor extends javax.swing.JFrame {
         initComponents();
         fundRaiserController = new FundRaiserController();
         sponsorController = new SponsorController();
-        model = (DefaultTableModel) tblBloodBank.getModel();
+        model = (DefaultTableModel) sponsorTable.getModel();
         model.setRowCount(0);
         ArrayList<FundRaiserRequest> frr = fundRaiserController.getFundRaiserRequests();
         for(FundRaiserRequest fr: frr){
@@ -72,7 +72,7 @@ public class Sponsor extends javax.swing.JFrame {
         RightPane = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblBloodBank = new javax.swing.JTable();
+        sponsorTable = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txtRequestID = new javax.swing.JTextField();
@@ -127,7 +127,7 @@ public class Sponsor extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
-        tblBloodBank.setModel(new javax.swing.table.DefaultTableModel(
+        sponsorTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -138,7 +138,7 @@ public class Sponsor extends javax.swing.JFrame {
                 "HEALTH CAMP NAME", "TOTAL AMOUNT", "CREATED ON", "AMOUNT DUE"
             }
         ));
-        jScrollPane1.setViewportView(tblBloodBank);
+        jScrollPane1.setViewportView(sponsorTable);
 
         jLabel1.setFont(new java.awt.Font("Calibri", 0, 36)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -226,13 +226,13 @@ public class Sponsor extends javax.swing.JFrame {
     private void btnApproveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApproveActionPerformed
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         String date = dateFormat.format(java.util.Calendar.getInstance().getTime());
-        int selectedRow = tblBloodBank.getSelectedRow();
+        int selectedRow = sponsorTable.getSelectedRow();
         if(selectedRow == -1){
-            JOptionPane.showMessageDialog(null,"Select a row before choosing to view/delete record", " Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Please select a row", " Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        String healthcampName = (String) tblBloodBank.getValueAt(selectedRow, 0);
-        int amountDue = (Integer) tblBloodBank.getValueAt(selectedRow, 3);
+        String healthcampName = (String) sponsorTable.getValueAt(selectedRow, 0);
+        int amountDue = (Integer) sponsorTable.getValueAt(selectedRow, 3);
         int amountDonated = Integer.parseInt(txtRequestID.getText());
         if(amountDue >= amountDonated && amountDonated >= 0 ){
             sponsorController.insertSponsor(loggedInUser, healthcampName, amountDonated, date);
@@ -290,7 +290,7 @@ public class Sponsor extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSplitPane jSplitPane1;
-    private javax.swing.JTable tblBloodBank;
+    private javax.swing.JTable sponsorTable;
     private javax.swing.JTextField txtRequestID;
     // End of variables declaration//GEN-END:variables
 }

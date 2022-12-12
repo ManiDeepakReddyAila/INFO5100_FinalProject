@@ -1,12 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package UI.Finance.FundRaiser;
 
 import Models.FundRaiserRequest;
 import Controller.FundRaiserController;
-import UI.Login;
 import UI.Login;
 import java.awt.CardLayout;
 import java.text.DateFormat;
@@ -27,8 +22,6 @@ public class Fundraiser extends javax.swing.JFrame {
         initComponents();
         fundRaiserController = new FundRaiserController();
         model = (DefaultTableModel) jTable1.getModel();
-        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-        String Date = dateFormat.format(java.util.Calendar.getInstance().getTime());
         populateTable();
     }
     
@@ -244,9 +237,9 @@ public class Fundraiser extends javax.swing.JFrame {
 
     private void btnviewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnviewActionPerformed
         // TODO add your handling code here:
-        Fundraiser mvm;
-        mvm = new Fundraiser();
-        mvm.setVisible(true);
+        Fundraiser fr;
+        fr = new Fundraiser();
+        fr.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnviewActionPerformed
 
@@ -258,7 +251,7 @@ public class Fundraiser extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         int selectedRow = jTable1.getSelectedRow();
         if(selectedRow == -1){
-            JOptionPane.showMessageDialog(null,"Select a row before choosing to view/delete record", " Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Please select a row", " Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
         String healthcampName = (String) jTable1.getValueAt(selectedRow, 0);
@@ -273,7 +266,7 @@ public class Fundraiser extends javax.swing.JFrame {
         
         int selectedRow = jTable1.getSelectedRow();
         if(selectedRow == -1){
-            JOptionPane.showMessageDialog(null,"Select a row before choosing to view/delete record", " Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Please select a row", " Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
         String healthcampName = (String) jTable1.getValueAt(selectedRow, 0);
@@ -289,7 +282,7 @@ public class Fundraiser extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         int selectedRow = jTable1.getSelectedRow();
         if(selectedRow == -1){
-            JOptionPane.showMessageDialog(null,"Select a row before choosing to view/delete record", " Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Please select a row", " Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
         String healthcamp_name = (String) jTable1.getValueAt(selectedRow, 0);

@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package UI;
 
 import UI.Service.Pharmacy.Pharmacy;
@@ -25,9 +21,6 @@ import org.apache.log4j.Logger;
  */
 public class Login extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Login
-     */
     private LoginController loginController;
     public HierarchyManage hr;
     public Fundraiser fr;
@@ -213,7 +206,6 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:String UserName = txtUserName.getText();
         String UserName = txtUserName.getText();
         char[] passwordArr = txtPwd.getPassword();
         String password = String.valueOf(passwordArr);
@@ -278,8 +270,8 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-           RegistrationScreen rs = new RegistrationScreen(PanelLogin);
+        
+        RegistrationScreen rs = new RegistrationScreen(PanelLogin);
         PanelLogin.add("RegistrationScreen", rs);
         CardLayout layout = (CardLayout) PanelLogin.getLayout();
         layout.next(PanelLogin);

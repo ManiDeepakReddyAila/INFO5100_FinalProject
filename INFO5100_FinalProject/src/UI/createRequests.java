@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package UI;
 
 import Controller.AdminController;
@@ -219,28 +215,22 @@ public class createRequests extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
-        // TODO add your handling code here:
         new Login().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnLogoutActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        
         PatientRegistration orgPanel = new PatientRegistration();
         jSplitPane1.setRightComponent(orgPanel);
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
         PatientPanel orgPanel = new PatientPanel();
-            jSplitPane1.setRightComponent(orgPanel);
+        jSplitPane1.setRightComponent(orgPanel);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-        
         ArrayList<Notification> notifications = notificationController.getNotifications();
         String date = "";
         for(Notification notif: notifications){
@@ -256,10 +246,16 @@ public class createRequests extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         String name =  jTextField1.getText();
-        int numberOfBeds = Integer.parseInt(jTextField2.getText());
+        int numberOfBeds = 0;
+        try{
+            numberOfBeds = Integer.parseInt(jTextField2.getText());
+        } catch(Exception e){
+            JOptionPane.showMessageDialog(null,"Should be integer not String", "Info", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         String date = dateFormat.format(java.util.Calendar.getInstance().getTime());
-        // add validation
         adminController.insertLabRequest(name, numberOfBeds, username, date, "PENDING");
         JOptionPane.showMessageDialog(null,"Request created & sent to Admin", "Info", JOptionPane.OK_OPTION);
         jTextField1.setText("");

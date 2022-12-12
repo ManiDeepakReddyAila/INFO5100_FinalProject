@@ -91,8 +91,8 @@ public class PharmacyCheckout extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(255, 255, 255));
 
-        lblApprovedorRejected.setFont(new java.awt.Font("Calibri", 0, 36)); // NOI18N
-        lblApprovedorRejected.setForeground(new java.awt.Color(102, 153, 255));
+        lblApprovedorRejected.setFont(new java.awt.Font("Tw Cen MT", 0, 36)); // NOI18N
+        lblApprovedorRejected.setForeground(new java.awt.Color(0, 102, 0));
         lblApprovedorRejected.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblApprovedorRejected.setText("CREATE REQUEST");
 
@@ -100,8 +100,8 @@ public class PharmacyCheckout extends javax.swing.JPanel {
 
         lblRequest2.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
 
-        jButton1.setBackground(new java.awt.Color(102, 153, 255));
-        jButton1.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        jButton1.setBackground(new java.awt.Color(0, 102, 0));
+        jButton1.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("CHECKOUT");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -110,22 +110,31 @@ public class PharmacyCheckout extends javax.swing.JPanel {
             }
         });
 
+        jList1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jScrollPane1.setViewportView(jList1);
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel1.setText("Medicines for Patient: ");
 
+        jLabel2.setFont(new java.awt.Font("Tw Cen MT", 0, 14)); // NOI18N
         jLabel2.setText("Acebutolol (Sectral)");
 
+        jLabel3.setFont(new java.awt.Font("Tw Cen MT", 0, 14)); // NOI18N
         jLabel3.setText("Acetaminophen");
 
+        jLabel4.setFont(new java.awt.Font("Tw Cen MT", 0, 14)); // NOI18N
         jLabel4.setText("Atenolol (Tenormin)");
 
+        jLabel5.setFont(new java.awt.Font("Tw Cen MT", 0, 14)); // NOI18N
         jLabel5.setText("Betaxolol (Kerlone)");
 
+        jLabel6.setFont(new java.awt.Font("Tw Cen MT", 0, 14)); // NOI18N
         jLabel6.setText("Bisoprolol (Zebeta)");
 
+        jLabel7.setFont(new java.awt.Font("Tw Cen MT", 0, 14)); // NOI18N
         jLabel7.setText("Muscle relaxants");
 
+        jLabel8.setFont(new java.awt.Font("Tw Cen MT", 0, 14)); // NOI18N
         jLabel8.setText("Nadolol (Corgard)");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -191,7 +200,7 @@ public class PharmacyCheckout extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addComponent(lblApprovedorRejected, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblRequest1)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)

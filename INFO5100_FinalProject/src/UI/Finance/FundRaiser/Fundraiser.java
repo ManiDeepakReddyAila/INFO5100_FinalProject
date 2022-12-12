@@ -276,12 +276,16 @@ public class Fundraiser extends javax.swing.JFrame {
             return;
         }
         String healthcamp_name = (String) jTable1.getValueAt(selectedRow, 0);
-        int total_amount = (Integer) jTable1.getValueAt(selectedRow, 1);
-        MainFundRaise fr = new MainFundRaise(RightPanel);
-        fr.addMedicinesToCart(healthcamp_name, total_amount);
-        RightPanel.add("RaiseFunds", fr);
-        CardLayout layout = (CardLayout) RightPanel.getLayout();
-        layout.next(RightPanel);
+        String status = (String) jTable1.getValueAt(selectedRow, 2);
+        if(!status.equals("Pending")){
+            int total_amount = (Integer) jTable1.getValueAt(selectedRow, 1);
+            MainFundRaise fr = new MainFundRaise(RightPanel);
+            fr.addMedicinesToCart(healthcamp_name, total_amount);
+            RightPanel.add("RaiseFunds", fr);
+            CardLayout layout = (CardLayout) RightPanel.getLayout();
+            layout.next(RightPanel);
+        }
+        
 
     }//GEN-LAST:event_jButton4ActionPerformed
 

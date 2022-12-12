@@ -40,13 +40,17 @@ public class Account extends javax.swing.JFrame {
         billController = new BillController();
         fundRaiserController = new FundRaiserController();
         populateTable();
+        populateComboBox();
+        jLabel2.setVisible(false);
+ 
+    }
+    
+    public void populateComboBox(){
         ArrayList<String> healthcamps = billController.getHealthcampNames();
         jComboBox1.removeAllItems();
         for(String name: healthcamps){
             jComboBox1.addItem(name);
         }
-        jLabel2.setVisible(false);
- 
     }
     
     public void populateTable(){
@@ -161,13 +165,13 @@ public class Account extends javax.swing.JFrame {
 
         tblMedicalEquip.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Patient_name", "Lab", "Test_name", "Hospital", "Healthcamp", "Doctor", "Bill"
+                "Patient_name", "Lab", "Test_name", "Hospital", "Healthcamp", "Doctor"
             }
         ));
         jScrollPane1.setViewportView(tblMedicalEquip);
@@ -318,7 +322,8 @@ public class Account extends javax.swing.JFrame {
             medicinenames = medicine;
         }
         Bill newjFrame = new Bill(name, medicinenames, test_name, healthcamp_name);
-        newjFrame.setVisible(true);        
+        newjFrame.setVisible(true); 
+        populateComboBox();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jComboBox1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboBox1MouseClicked

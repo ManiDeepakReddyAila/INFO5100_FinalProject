@@ -134,7 +134,7 @@ public class Sponsor extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Healthcamp Name", "Total Amount", "Created", "Amount Due"
+                "HEALTH CAMP NAME", "TOTAL AMOUNT", "CREATED ON", "Amount Due"
             }
         ));
         jScrollPane1.setViewportView(tblBloodBank);

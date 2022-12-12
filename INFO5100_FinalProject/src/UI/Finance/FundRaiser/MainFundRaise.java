@@ -78,7 +78,7 @@ public class MainFundRaise extends javax.swing.JPanel {
         jTable1 = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(201, 231, 247));
 
         heading.setFont(new java.awt.Font("Calibri", 0, 36)); // NOI18N
         heading.setForeground(new java.awt.Color(102, 153, 255));

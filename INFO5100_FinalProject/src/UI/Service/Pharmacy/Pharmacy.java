@@ -18,7 +18,7 @@ import javax.swing.table.DefaultTableModel;
 import org.apache.log4j.Logger;
 /**
  *
- * @author aesha
+ * @author pranitha
  */
 public class Pharmacy extends javax.swing.JFrame {
 

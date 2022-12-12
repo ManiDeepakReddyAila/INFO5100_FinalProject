@@ -19,7 +19,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author aesha
+ * @author pranitha
  */
 public class UserScreen extends javax.swing.JPanel {
 

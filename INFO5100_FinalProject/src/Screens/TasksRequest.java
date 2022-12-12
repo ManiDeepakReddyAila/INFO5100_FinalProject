@@ -5,6 +5,7 @@
 package Screens;
 
 import Controller.AdminController;
+import Controller.OrganizationController;
 import Models.AdminRequests;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -29,10 +30,12 @@ public class TasksRequest extends javax.swing.JPanel {
     private AdminController adminController;
     private JPanel RightPanel;
     private DefaultTableModel md;
+    private OrganizationController organizationController;
 
     public TasksRequest(JPanel RightPanel) {
         initComponents();
         adminController = new AdminController();
+        organizationController = new OrganizationController();
         this.RightPanel = RightPanel;
         populateTable();
     }
@@ -163,8 +166,10 @@ public class TasksRequest extends javax.swing.JPanel {
         }
         String healthcampName = (String) tblManageRequest.getValueAt(selectedRow, 0);
         adminController.updateStatus("APPROVED", healthcampName);
-        JOptionPane.showMessageDialog(null,"Request Approved!", " Info", JOptionPane.INFORMATION_MESSAGE);
+        
         populateTable();
+        organizationController.insertOrg(healthcampName, "Healthcamp", "Service", "US");
+        JOptionPane.showMessageDialog(null,"Request Approved, Healthcamp added!", " Info", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_btnApproveActionPerformed
 
     private void btnRejectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRejectActionPerformed

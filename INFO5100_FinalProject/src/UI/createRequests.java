@@ -100,6 +100,7 @@ public class createRequests extends javax.swing.JFrame {
         jButton3.setFont(new java.awt.Font("K2D", 1, 18)); // NOI18N
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/notification-2.png"))); // NOI18N
+        jButton3.setText("0");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);

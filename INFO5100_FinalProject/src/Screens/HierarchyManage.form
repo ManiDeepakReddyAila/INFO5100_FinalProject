@@ -61,18 +61,16 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="btnRequest" pref="252" max="32767" attributes="0"/>
-                          <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
-                                  <Component id="btnLogout" min="-2" pref="124" max="-2" attributes="0"/>
-                              </Group>
-                              <Component id="btnEnterprise" alignment="0" max="32767" attributes="0"/>
-                              <Component id="btnOrg" alignment="0" pref="252" max="32767" attributes="0"/>
+                          <Component id="btnRequest" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+                              <Component id="btnLogout" min="-2" pref="124" max="-2" attributes="0"/>
                           </Group>
+                          <Component id="btnEnterprise" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btnOrg" alignment="0" max="32767" attributes="0"/>
                           <Component id="btnUser" alignment="1" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="14" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>

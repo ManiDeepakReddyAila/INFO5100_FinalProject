@@ -13,7 +13,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author aesha
+ * @author manideepakreddyaila
  */
 public class OrgScreen extends javax.swing.JPanel {
 

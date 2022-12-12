@@ -89,7 +89,7 @@ public class PharmacyCheckout extends javax.swing.JPanel {
         jLabel8 = new javax.swing.JLabel();
         jSpinner7 = new javax.swing.JSpinner();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(222, 242, 218));
 
         lblApprovedorRejected.setFont(new java.awt.Font("Tw Cen MT", 0, 36)); // NOI18N
         lblApprovedorRejected.setForeground(new java.awt.Color(0, 102, 0));

@@ -66,7 +66,9 @@ public class VaccineAvailability extends javax.swing.JPanel {
         btnCreate = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox<>();
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(222, 242, 218));
+
+        jPanel1.setBackground(new java.awt.Color(222, 242, 218));
         jPanel1.setPreferredSize(new java.awt.Dimension(1200, 800));
 
         jLabel2.setBackground(new java.awt.Color(51, 153, 255));

@@ -187,7 +187,7 @@ public class HealthcampDoctor extends javax.swing.JFrame {
 
         RightPanel.setLayout(new java.awt.CardLayout());
 
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setBackground(new java.awt.Color(222, 242, 218));
 
         tblTransport.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

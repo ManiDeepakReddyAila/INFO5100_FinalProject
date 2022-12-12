@@ -549,7 +549,7 @@ public class Hospital extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         Random rand = new Random();
-        String[] randomVitals = {"ECG is Abnormal, suggested Cardio Healthcamp", "Weak bone strength, suggested Orthopaedic"};
+        String[] randomVitals = {"ECG is Abnormal, suggested Cardio Healthcamp", "Weak bone strength, suggested Orthopaedic","Low WBC count, suggested Cancer Healthcamp"};
         String suggestion = randomVitals[rand.nextInt(randomVitals.length)];
         jLabel3.setText("Suggestion: " + suggestion);
         hospitalController.updateSugestion(suggestion, nameField.getText());

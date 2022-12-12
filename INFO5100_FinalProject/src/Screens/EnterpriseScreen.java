@@ -63,7 +63,7 @@ public class EnterpriseScreen extends javax.swing.JPanel {
         btnSearch = new javax.swing.JButton();
         cmbCountry = new javax.swing.JComboBox<>();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(255, 249, 173));
 
         tblEnterprise.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

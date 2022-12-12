@@ -59,7 +59,7 @@ public class PatientRegistration extends javax.swing.JPanel {
         genderField.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female", "Other" }));
 
         submitButton.setBackground(new java.awt.Color(0, 102, 0));
-        submitButton.setFont(new java.awt.Font("Tw Cen MT", 0, 24)); // NOI18N
+        submitButton.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
         submitButton.setForeground(new java.awt.Color(255, 255, 255));
         submitButton.setText("SUBMIT");
         submitButton.addActionListener(new java.awt.event.ActionListener() {

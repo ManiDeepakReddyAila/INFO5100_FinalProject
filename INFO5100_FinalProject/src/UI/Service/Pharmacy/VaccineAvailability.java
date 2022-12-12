@@ -71,7 +71,7 @@ public class VaccineAvailability extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Calibri", 0, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 102, 0));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("VACCINES AVAILABILITY");
+        jLabel2.setText("MEDICINES AVAILABILITY");
 
         tblVaccineAvailability.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -81,7 +81,7 @@ public class VaccineAvailability extends javax.swing.JPanel {
                 {null, null, null}
             },
             new String [] {
-                "Available Vaccines", "Available Quantity", "Price"
+                "AVAILABLE MEDICINES", "AVAILABLE QUANTITY", "UNIT PRICE"
             }
         ));
         jScrollPane1.setViewportView(tblVaccineAvailability);

@@ -28,6 +28,17 @@ public class UsersController {
         }
     }
     
+    public void deleteUser(String name){
+        try {
+            Statement myStatement = ConnectioinManager.getConnection().createStatement();
+            String query = "Delete from `users` where username = '" +name+ "'";
+            myStatement.executeUpdate(query);
+
+        } catch (Exception E) {
+            
+        }
+    }
+    
     public ArrayList<User> getUsers(){
         ArrayList<User> users = new ArrayList<>();
         try {

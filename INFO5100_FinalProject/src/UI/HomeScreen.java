@@ -25,7 +25,7 @@ public class HomeScreen extends javax.swing.JFrame {
     public Hospital crm;
     public Healthcamp tm;
     public HealthcampDoctor tm1;
-    public createRequests cr;
+    public CreateRequests cr;
     public Pharmacy vm;
     public Account mef;
     public Sponsor bbm;

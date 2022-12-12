@@ -28,7 +28,7 @@ public class Login extends javax.swing.JFrame {
     public Hospital crm;
     public Healthcamp tm;
     public HealthcampDoctor tm1;
-    public CreateRequests cr;
+    public VolunteerHome cr;
     public Pharmacy vm;
     public Account mef;
     public Sponsor bbm;
@@ -245,7 +245,7 @@ public class Login extends javax.swing.JFrame {
                         this.dispose();
                         return;
                     }else if (org.equalsIgnoreCase("Ngo")) {
-                        cr = new CreateRequests(u.getUsername());
+                        cr = new VolunteerHome(u.getUsername());
                         cr.setVisible(true);
                         this.dispose();
                         return;

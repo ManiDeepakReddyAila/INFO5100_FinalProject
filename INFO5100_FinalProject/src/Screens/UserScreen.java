@@ -86,10 +86,9 @@ public class UserScreen extends javax.swing.JPanel {
         cmbNetwork = new javax.swing.JComboBox<>();
         cmbOrg = new javax.swing.JComboBox<>();
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(255, 249, 173));
 
         jLabel5.setFont(new java.awt.Font("Calibri", 0, 36)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(102, 153, 255));
         jLabel5.setText("MANAGE USERS");
 
         tblUsers.setModel(new javax.swing.table.DefaultTableModel(
@@ -138,9 +137,8 @@ public class UserScreen extends javax.swing.JPanel {
 
         txtEmailID.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
 
-        btnCreate.setBackground(new java.awt.Color(102, 153, 255));
-        btnCreate.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        btnCreate.setForeground(new java.awt.Color(255, 255, 255));
+        btnCreate.setBackground(new java.awt.Color(248, 237, 98));
+        btnCreate.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         btnCreate.setText("CREATE");
         btnCreate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -251,7 +249,7 @@ public class UserScreen extends javax.swing.JPanel {
                             .addComponent(jLabel8)
                             .addComponent(pwd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(53, 53, 53)
-                        .addComponent(btnCreate, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnCreate))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(95, 95, 95)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)))

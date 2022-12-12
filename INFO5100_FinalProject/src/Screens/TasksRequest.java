@@ -71,10 +71,9 @@ public class TasksRequest extends javax.swing.JPanel {
         btnApprove = new javax.swing.JButton();
         btnReject = new javax.swing.JButton();
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(255, 249, 173));
 
         jLabel1.setFont(new java.awt.Font("Calibri", 0, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(102, 153, 255));
         jLabel1.setText("MANAGE REQUEST");
 
         tblManageRequest.setModel(new javax.swing.table.DefaultTableModel(
@@ -92,9 +91,8 @@ public class TasksRequest extends javax.swing.JPanel {
         tblManageRequest.setShowGrid(false);
         jScrollPane1.setViewportView(tblManageRequest);
 
-        btnApprove.setBackground(new java.awt.Color(102, 153, 255));
+        btnApprove.setBackground(new java.awt.Color(248, 237, 98));
         btnApprove.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        btnApprove.setForeground(new java.awt.Color(255, 255, 255));
         btnApprove.setText("APPROVE");
         btnApprove.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -102,9 +100,8 @@ public class TasksRequest extends javax.swing.JPanel {
             }
         });
 
-        btnReject.setBackground(new java.awt.Color(102, 153, 255));
+        btnReject.setBackground(new java.awt.Color(248, 237, 98));
         btnReject.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        btnReject.setForeground(new java.awt.Color(255, 255, 255));
         btnReject.setText("REJECT");
         btnReject.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

@@ -12,6 +12,7 @@ import UI.Login;
 import Models.PatientReports;
 import Controller.HealthcampController;
 import Controller.NotificationController;
+import Models.Notification;
 import UI.Login;
 import UI.PatientReport;
 import UI.PatientReport;
@@ -91,6 +92,7 @@ public class Hospital extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         btnViewRequest = new javax.swing.JButton();
         btnLogout = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
         RightPane = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -138,25 +140,42 @@ public class Hospital extends javax.swing.JFrame {
             }
         });
 
+        jButton6.setBackground(new java.awt.Color(0, 102, 0));
+        jButton6.setFont(new java.awt.Font("K2D", 1, 18)); // NOI18N
+        jButton6.setForeground(new java.awt.Color(255, 255, 255));
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/notification-2.png"))); // NOI18N
+        jButton6.setText("0");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnViewRequest, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnViewRequest, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addComponent(jButton6)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(61, 61, 61)
+                .addGap(8, 8, 8)
+                .addComponent(jButton6)
+                .addGap(64, 64, 64)
                 .addComponent(btnViewRequest)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 652, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 594, Short.MAX_VALUE)
                 .addComponent(btnLogout))
         );
 
@@ -563,6 +582,33 @@ public class Hospital extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton5ActionPerformed
 
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+
+        ArrayList<Notification> notifications = notificationController.getNotifications();
+        String date = "";
+        for(Notification notif: notifications){
+            if(notif.getReceiver().equals("hospital") && notif.getRead().equals("0")){
+                JOptionPane.showMessageDialog(null,notif.getMessage(), "New Notification from " + notif.getSender() +"!", JOptionPane.INFORMATION_MESSAGE);
+                date = notif.getDate();
+                break;
+            }
+        }
+        notificationController.updateRead(date);
+        populateTable1();
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    public void populateTable1(){
+        ArrayList<Notification> notifications = notificationController.getNotifications();
+        int count = 0;
+        for(Notification notif: notifications){
+            if(notif.getReceiver().equals("hospital") && notif.getRead().equals("0")){
+                count++;
+            }
+        }
+        jButton6.setText("" + count);
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -612,6 +658,7 @@ public class Hospital extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel17;

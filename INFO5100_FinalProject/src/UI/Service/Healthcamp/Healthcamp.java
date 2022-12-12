@@ -309,7 +309,7 @@ public class Healthcamp extends javax.swing.JFrame {
         healthcampController.updateStatus("REJECTED", date1);
         JOptionPane.showMessageDialog(null,"Request has been Rejected", "Sorry!", JOptionPane.INFORMATION_MESSAGE);
         String m = JOptionPane.showInputDialog("Rejection Comment?");
-        notificationController.insertNotification("healthcamp", "volunteer", "0", name + ": " + m, date);
+        notificationController.insertNotification("healthcamp", "hospital", "0", name + ": " + m, date);
         populateTable();
     }//GEN-LAST:event_btnRejectActionPerformed
 

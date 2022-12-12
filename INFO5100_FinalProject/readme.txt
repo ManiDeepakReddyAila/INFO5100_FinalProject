@@ -7,4 +7,5 @@ The application has a voluntary login page who enrols a patient by entering his 
 
 
 
-
+Object Model : 
+https://lucid.app/lucidchart/664d5237-c933-4163-aa0c-050f4800d902/edit?viewport_loc=-1112%2C-1468%2C3674%2C1670%2C0_0&invitationId=inv_daf65a62-3ba0-4343-bc80-187867c1bd4f

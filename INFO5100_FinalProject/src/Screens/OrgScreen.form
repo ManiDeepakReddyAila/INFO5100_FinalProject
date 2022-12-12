@@ -63,7 +63,7 @@
                       </Group>
                       <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="cmbCountry" linkSize="1" min="-2" pref="81" max="-2" attributes="0"/>
+                          <Component id="cmbNetwork" linkSize="1" min="-2" pref="81" max="-2" attributes="0"/>
                           <Component id="cmbEnterprise" linkSize="1" min="-2" pref="122" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="222" max="-2" attributes="0"/>
@@ -103,7 +103,7 @@
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="cmbCountry" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cmbNetwork" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -231,7 +231,7 @@
         <Property name="text" type="java.lang.String" value="ENTERPRISE:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JComboBox" name="cmbCountry">
+    <Component class="javax.swing.JComboBox" name="cmbNetwork">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Candara" size="14" style="0"/>
@@ -246,7 +246,7 @@
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmbCountryActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmbNetworkActionPerformed"/>
       </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>

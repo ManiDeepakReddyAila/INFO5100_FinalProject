@@ -32,11 +32,10 @@ public class OrgScreen extends javax.swing.JPanel {
         enterpriseController = new EnterpriseController();
         organizationController = new OrganizationController();
         ArrayList<Network> networks = networkController.getNetworks();
-        cmbCountry.removeAllItems();
+        cmbNetwork.removeAllItems();
         for(Network n: networks){
-            cmbCountry.addItem(n.getNetworkName());
+            cmbNetwork.addItem(n.getNetworkName());
         }
-        String network = cmbCountry.getItemAt(cmbCountry.getSelectedIndex());
     }
 
     /**
@@ -58,7 +57,7 @@ public class OrgScreen extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        cmbCountry = new javax.swing.JComboBox<>();
+        cmbNetwork = new javax.swing.JComboBox<>();
         cmbEnterprise = new javax.swing.JComboBox<>();
         btnSearch = new javax.swing.JButton();
         btnCreate = new javax.swing.JButton();
@@ -105,11 +104,11 @@ public class OrgScreen extends javax.swing.JPanel {
         jLabel7.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         jLabel7.setText("ENTERPRISE:");
 
-        cmbCountry.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
-        cmbCountry.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cmbCountry.addActionListener(new java.awt.event.ActionListener() {
+        cmbNetwork.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
+        cmbNetwork.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbNetwork.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbCountryActionPerformed(evt);
+                cmbNetworkActionPerformed(evt);
             }
         });
 
@@ -153,7 +152,7 @@ public class OrgScreen extends javax.swing.JPanel {
                             .addComponent(jLabel7))
                         .addGap(23, 23, 23)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cmbCountry, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cmbNetwork, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cmbEnterprise, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(222, 222, 222)
                         .addComponent(btnSearch)
@@ -174,7 +173,7 @@ public class OrgScreen extends javax.swing.JPanel {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {cmbCountry, cmbEnterprise});
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {cmbEnterprise, cmbNetwork});
 
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -187,7 +186,7 @@ public class OrgScreen extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6)
-                            .addComponent(cmbCountry, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cmbNetwork, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(26, 26, 26)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7)
@@ -209,12 +208,10 @@ public class OrgScreen extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
-        // TODO add your handling code here:
-
         String type = txtOrgType.getText();
         String name = txtOrgName.getText();
         String enterprise = cmbEnterprise.getItemAt(cmbEnterprise.getSelectedIndex());
-        String network = cmbCountry.getItemAt(cmbCountry.getSelectedIndex());
+        String network = cmbNetwork.getItemAt(cmbNetwork.getSelectedIndex());
         
         organizationController.insertOrg(name, type, enterprise, network);
         JOptionPane.showMessageDialog(this, "Organization successfully created!");
@@ -224,7 +221,7 @@ public class OrgScreen extends javax.swing.JPanel {
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         // TODO add your handling code here:
-        String network = (String) cmbCountry.getSelectedItem();
+        String network = (String) cmbNetwork.getSelectedItem();
         String enterprise = (String) cmbEnterprise.getSelectedItem();
 
         DefaultTableModel md = (DefaultTableModel) tblManageOrg.getModel();
@@ -241,22 +238,22 @@ public class OrgScreen extends javax.swing.JPanel {
 
     }//GEN-LAST:event_btnSearchActionPerformed
 
-    private void cmbCountryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCountryActionPerformed
+    private void cmbNetworkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbNetworkActionPerformed
         // TODO add your handling code here:
-        String network = cmbCountry.getItemAt(cmbCountry.getSelectedIndex());
+        String network = cmbNetwork.getItemAt(cmbNetwork.getSelectedIndex());
         ArrayList<Enterprise> enterprises = enterpriseController.getEnterprise(network);
         cmbEnterprise.removeAllItems();
         for(Enterprise e: enterprises){
             cmbEnterprise.addItem(e.getEnterpriseName());
         }
-    }//GEN-LAST:event_cmbCountryActionPerformed
+    }//GEN-LAST:event_cmbNetworkActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCreate;
     private javax.swing.JButton btnSearch;
-    private javax.swing.JComboBox<String> cmbCountry;
     private javax.swing.JComboBox<String> cmbEnterprise;
+    private javax.swing.JComboBox<String> cmbNetwork;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;

@@ -73,6 +73,8 @@ public class UserScreen extends javax.swing.JPanel {
         cmbEnterprise = new javax.swing.JComboBox<>();
         cmbNetwork = new javax.swing.JComboBox<>();
         cmbOrg = new javax.swing.JComboBox<>();
+        btnCreate1 = new javax.swing.JButton();
+        btnCreate2 = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(255, 249, 173));
 
@@ -151,6 +153,24 @@ public class UserScreen extends javax.swing.JPanel {
 
         cmbOrg.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        btnCreate1.setBackground(new java.awt.Color(248, 237, 98));
+        btnCreate1.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        btnCreate1.setText("DELETE");
+        btnCreate1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCreate1ActionPerformed(evt);
+            }
+        });
+
+        btnCreate2.setBackground(new java.awt.Color(248, 237, 98));
+        btnCreate2.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        btnCreate2.setText("UPDATE");
+        btnCreate2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCreate2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -192,8 +212,12 @@ public class UserScreen extends javax.swing.JPanel {
                         .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(26, 26, 26)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 793, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(148, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 793, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnCreate1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnCreate2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(30, Short.MAX_VALUE))
             .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -204,8 +228,15 @@ public class UserScreen extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addComponent(jLabel5)
-                .addGap(50, 50, 50)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(50, 50, 50)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(60, 60, 60)
+                        .addComponent(btnCreate1)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnCreate2)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(124, 124, 124)
@@ -332,9 +363,40 @@ public class UserScreen extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_cmbEnterpriseActionPerformed
 
+    private void btnCreate1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreate1ActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = tblUsers.getSelectedRow();
+        if(selectedRow == -1){
+            JOptionPane.showMessageDialog(null,"Please select a row", " Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        String userName = (String) tblUsers.getValueAt(selectedRow, 0);
+        userController.deleteUser(userName);
+        DefaultTableModel model = (DefaultTableModel) tblUsers.getModel();
+        model.setRowCount(0);
+        ArrayList<User> users = userController.getUsers();
+        for(User u: users){
+            Object row[] = new Object[7];
+            row[0] = u.getUsername();
+            row[1] = u.getName();
+            row[2] = u.getPhone();
+            row[3] = u.getEmailId();
+            row[4] = u.getOrganization();
+            row[5] = u.getEnterprise();
+            row[6] = u.getNetwork();
+            model.addRow(row);
+        }
+    }//GEN-LAST:event_btnCreate1ActionPerformed
+
+    private void btnCreate2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreate2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCreate2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCreate;
+    private javax.swing.JButton btnCreate1;
+    private javax.swing.JButton btnCreate2;
     private javax.swing.JComboBox<String> cmbEnterprise;
     private javax.swing.JComboBox<String> cmbNetwork;
     private javax.swing.JComboBox<String> cmbOrg;

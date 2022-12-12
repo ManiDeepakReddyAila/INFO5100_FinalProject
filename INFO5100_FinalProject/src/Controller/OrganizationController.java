@@ -144,4 +144,15 @@ public class OrganizationController {
         return orgNames;
     }
     
+    public void deleteOrganization(String name){
+        try {
+            Statement myStatement = ConnectioinManager.getConnection().createStatement();
+            String query = "Delete from `organization` where name = '" + name + "'";
+            myStatement.executeUpdate(query);
+
+        } catch (Exception E) {
+            
+        }
+    }
+    
 }

@@ -88,7 +88,7 @@ public class RegistrationScreen extends javax.swing.JPanel {
         jLabel8.setText("Organisation:");
 
         btnRegister.setBackground(new java.awt.Color(0, 102, 0));
-        btnRegister.setFont(new java.awt.Font("Tw Cen MT", 0, 24)); // NOI18N
+        btnRegister.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
         btnRegister.setForeground(new java.awt.Color(255, 255, 255));
         btnRegister.setText("REGISTER");
         btnRegister.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -128,7 +128,7 @@ public class RegistrationScreen extends javax.swing.JPanel {
         jLabel10.setText("REGISTER A NEW PATIENT HERE");
 
         btnBack.setBackground(new java.awt.Color(0, 102, 0));
-        btnBack.setFont(new java.awt.Font("Tw Cen MT", 0, 24)); // NOI18N
+        btnBack.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
         btnBack.setForeground(new java.awt.Color(255, 255, 255));
         btnBack.setText("GO BACK");
         btnBack.addActionListener(new java.awt.event.ActionListener() {

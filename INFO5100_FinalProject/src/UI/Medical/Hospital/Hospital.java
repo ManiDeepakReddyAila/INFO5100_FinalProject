@@ -505,10 +505,10 @@ public class Hospital extends javax.swing.JFrame {
         int pending = 0;
 
         for (int row = 0; row < model.getRowCount(); row++) {
-
-            if (model.getValueAt(row, 5) == "APPROVED") {
+            String s = (String) model.getValueAt(row, 5);
+            if (s.equals("APPROVED")) {
                 accepted++;
-            } else if (model.getValueAt(row, 5) == "REJECTED") {
+            } else if (s.equals("REJECTED")) {
                 rejected++;
             } else {
                 pending++;

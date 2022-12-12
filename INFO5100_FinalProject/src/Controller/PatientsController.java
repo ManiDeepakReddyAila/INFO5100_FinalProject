@@ -33,7 +33,7 @@ public class PatientsController {
         return patients;
     }
     
-    public void insertPatients(String name, int age, String gender, String height, String weight){
+    public void insertPatients(String name, int age, String gender, int height, int weight){
         try {
             Statement myStatement = ConnectioinManager.getConnection().createStatement();
             String query = "Insert into `patients`" + "values('" + name + "','" + age + "','" + gender + "','" + height + "','" + weight + "')";

@@ -171,7 +171,7 @@ public class PatientRegistration extends javax.swing.JPanel {
          JOptionPane.showMessageDialog(null, "Please enter number for Age, Height and Weight!");   
         }
         
-        patientController.insertPatients(name, age, gender, gender, gender);
+        patientController.insertPatients(name, age, gender, height, weight);
         JOptionPane.showMessageDialog(null, "Patient Registered Successfully!");
         nameField.setText(null);
         ageField.setText(null);
